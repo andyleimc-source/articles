@@ -1,4 +1,4 @@
-# Jobs Invented the Interface. AI Is Killing It.
+# Steve Jobs Invented the Interface. AI Is Eliminating It.
 
 ### Preface
 
