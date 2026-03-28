@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" font-family="'SF Mono', 'Fira Mono', 'Consolas', monospace">
+  <!-- Background -->
+  <rect width="960" height="640" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="480" y="52" text-anchor="middle" font-size="22" font-weight="700" fill="#111111" font-family="'SF Pro Display', 'Helvetica Neue', sans-serif" letter-spacing="-0.5">The 6-File Documentation System</text>
+  <text x="480" y="76" text-anchor="middle" font-size="13" fill="#888888" font-family="'SF Pro Text', 'Helvetica Neue', sans-serif">One standard. Every project. No exceptions.</text>
+
+  <!-- Divider -->
+  <line x1="60" y1="94" x2="900" y2="94" stroke="#eeeeee" stroke-width="1"/>
+
+  <!-- Audience labels -->
+  <text x="200" y="118" text-anchor="middle" font-size="11" font-weight="600" fill="#aaaaaa" font-family="'SF Pro Text', sans-serif" letter-spacing="1">FOR HUMANS</text>
+  <text x="680" y="118" text-anchor="middle" font-size="11" font-weight="600" fill="#aaaaaa" font-family="'SF Pro Text', sans-serif" letter-spacing="1">FOR THE PROJECT</text>
+
+  <!-- Divider vertical hint -->
+  <line x1="480" y1="108" x2="480" y2="128" stroke="#dddddd" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- ===== ROW 1 ===== -->
+
+  <!-- README.md — special, wider, left -->
+  <rect x="60" y="130" width="360" height="155" rx="8" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="60" y="130" width="360" height="6" rx="4" fill="#333333"/>
+  <text x="85" y="168" font-size="15" font-weight="700" fill="#111111" font-family="'SF Mono', monospace">README.md</text>
+  <text x="85" y="188" font-size="11" fill="#777777" font-family="'SF Pro Text', sans-serif">Public Face — for humans</text>
+  <line x1="85" y1="200" x2="400" y2="200" stroke="#e8e8e8" stroke-width="1"/>
+  <text x="85" y="219" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">What is this project? What can it do?</text>
+  <text x="85" y="235" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">How do I install and run it?</text>
+  <text x="85" y="251" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Written for strangers and future-you.</text>
+  <text x="85" y="267" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">No internal details. No AI context.</text>
+
+  <!-- CLAUDE.md — special, wider, right -->
+  <rect x="540" y="130" width="360" height="155" rx="8" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="540" y="130" width="360" height="6" rx="4" fill="#111111"/>
+  <text x="565" y="168" font-size="15" font-weight="700" fill="#111111" font-family="'SF Mono', monospace">CLAUDE.md</text>
+  <text x="565" y="188" font-size="11" fill="#777777" font-family="'SF Pro Text', sans-serif">AI Context — auto-loaded every session</text>
+  <line x1="565" y1="200" x2="880" y2="200" stroke="#e8e8e8" stroke-width="1"/>
+  <text x="565" y="219" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Keep under 20 lines. Project summary,</text>
+  <text x="565" y="235" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">run command, critical rules for the AI.</text>
+  <text x="565" y="251" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">No feature lists. No install guides.</text>
+  <text x="565" y="267" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Every extra line costs context window.</text>
+
+  <!-- VS label between the two -->
+  <rect x="454" y="188" width="52" height="24" rx="12" fill="#f0f0f0"/>
+  <text x="480" y="205" text-anchor="middle" font-size="11" font-weight="600" fill="#999999" font-family="'SF Pro Text', sans-serif">vs</text>
+
+  <!-- ===== ROW 2: 4 cards ===== -->
+  <!-- PLAN.md -->
+  <rect x="60" y="310" width="198" height="175" rx="8" fill="#f9f9f9" stroke="#e8e8e8" stroke-width="1"/>
+  <rect x="60" y="310" width="198" height="6" rx="4" fill="#111111"/>
+  <text x="80" y="346" font-size="14" font-weight="700" fill="#111111" font-family="'SF Mono', monospace">PLAN.md</text>
+  <text x="80" y="364" font-size="11" fill="#777777" font-family="'SF Pro Text', sans-serif">Roadmap</text>
+  <line x1="80" y1="375" x2="238" y2="375" stroke="#eeeeee" stroke-width="1"/>
+  <text x="80" y="394" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Goals, phases,</text>
+  <text x="80" y="410" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">checklists, current</text>
+  <text x="80" y="426" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">status, known risks.</text>
+  <text x="80" y="442" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Read on demand.</text>
+  <text x="80" y="458" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Can be long.</text>
+
+  <!-- BUG.md -->
+  <rect x="288" y="310" width="198" height="175" rx="8" fill="#f9f9f9" stroke="#e8e8e8" stroke-width="1"/>
+  <rect x="288" y="310" width="198" height="6" rx="4" fill="#111111"/>
+  <text x="308" y="346" font-size="14" font-weight="700" fill="#111111" font-family="'SF Mono', monospace">BUG.md</text>
+  <text x="308" y="364" font-size="11" fill="#777777" font-family="'SF Pro Text', sans-serif">Bug Log</text>
+  <line x1="308" y1="375" x2="466" y2="375" stroke="#eeeeee" stroke-width="1"/>
+  <text x="308" y="394" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Symptom → cause</text>
+  <text x="308" y="410" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">→ fix. One entry</text>
+  <text x="308" y="426" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">per resolved bug.</text>
+  <text x="308" y="442" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Prevents solving</text>
+  <text x="308" y="458" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">the same bug twice.</text>
+
+  <!-- DECISIONS.md -->
+  <rect x="516" y="310" width="198" height="175" rx="8" fill="#f9f9f9" stroke="#e8e8e8" stroke-width="1"/>
+  <rect x="516" y="310" width="198" height="6" rx="4" fill="#111111"/>
+  <text x="536" y="346" font-size="14" font-weight="700" fill="#111111" font-family="'SF Mono', monospace">DECISIONS.md</text>
+  <text x="536" y="364" font-size="11" fill="#777777" font-family="'SF Pro Text', sans-serif">Architecture Log</text>
+  <line x1="536" y1="375" x2="694" y2="375" stroke="#eeeeee" stroke-width="1"/>
+  <text x="536" y="394" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Write the why,</text>
+  <text x="536" y="410" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">not the what.</text>
+  <text x="536" y="426" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Records reasoning</text>
+  <text x="536" y="442" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">so constraints are</text>
+  <text x="536" y="458" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">never forgotten.</text>
+
+  <!-- LESSONS.md -->
+  <rect x="744" y="310" width="198" height="175" rx="8" fill="#f9f9f9" stroke="#e8e8e8" stroke-width="1"/>
+  <rect x="744" y="310" width="198" height="6" rx="4" fill="#111111"/>
+  <text x="764" y="346" font-size="14" font-weight="700" fill="#111111" font-family="'SF Mono', monospace">LESSONS.md</text>
+  <text x="764" y="364" font-size="11" fill="#777777" font-family="'SF Pro Text', sans-serif">Cross-Project Memory</text>
+  <line x1="764" y1="375" x2="922" y2="375" stroke="#eeeeee" stroke-width="1"/>
+  <text x="764" y="394" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">Reusable patterns</text>
+  <text x="764" y="410" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">&amp; gotchas. What</text>
+  <text x="764" y="426" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">you'd want when</text>
+  <text x="764" y="442" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">starting the next</text>
+  <text x="764" y="458" font-size="11" fill="#333333" font-family="'SF Pro Text', sans-serif">similar project.</text>
+
+  <!-- Footer rule -->
+  <line x1="60" y1="514" x2="900" y2="514" stroke="#eeeeee" stroke-width="1"/>
+
+  <!-- Key insight row -->
+  <text x="480" y="542" text-anchor="middle" font-size="12" font-weight="600" fill="#333333" font-family="'SF Pro Text', sans-serif">Key rule: README is for people. CLAUDE.md is for the AI. They never duplicate each other.</text>
+  <text x="480" y="562" text-anchor="middle" font-size="11" fill="#aaaaaa" font-family="'SF Pro Text', sans-serif">Exactly 6 files per project — no more, no less.</text>
+</svg>
