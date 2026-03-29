@@ -9,7 +9,7 @@
 
 ### AI 与产品
 
-- [乔布斯发明了界面，AI 正在消灭它](./publish/steve-jobs-invented-the-interface-ai-is-eliminating-it/article.md) — 从 GUI 的诞生到 AI Agent 的崛起，SaaS 行业正面临一场根本性的范式转移
+- [乔布斯发明了界面，AI 正在消灭它](./publish/steve-jobs-invented-the-interface-ai-is-eliminating-it/article-cn.md) — 从 GUI 的诞生到 AI Agent 的崛起，SaaS 行业正面临一场根本性的范式转移
 
 ---
 
