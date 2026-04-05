@@ -15,11 +15,10 @@ Sharing experiences, perspectives, and frameworks on AI, technology, and busines
 
 > Continuously updated.
 
-
 ---
 
-## 关注我
+## Follow Me
 
-<img src="./雷码工坊微信公众号.jpg" alt="雷码工坊笔记微信公众号" width="200" />
+<img src="./雷码工坊微信公众号.jpg" alt="雷码工坊笔记 WeChat Official Account" width="200" />
 
-**雷码工坊笔记** — 微信扫码关注
+**雷码工坊笔记** — Scan to follow my WeChat Official Account

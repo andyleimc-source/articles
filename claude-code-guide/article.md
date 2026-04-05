@@ -1,3 +1,8 @@
+---
+title: 国内用 Claude Code 的完整配置指南
+cover: ./imgs/cover.png
+---
+
 # 国内用 Claude Code 的完整配置指南
 
 最近 Claude Code 突然火了。
@@ -42,7 +47,7 @@ Claude Code is not available in your region
 
 在 Clash Verge 的"设置"页面，打开"虚拟网卡模式"开关：
 
-![Clash Verge 开启虚拟网卡模式](./Clash%20Verge.png)
+![Clash Verge 开启虚拟网卡模式](./Clash Verge.png)
 
 开启之后，代理模式选"规则"就够用了——它会自动判断哪些流量需要走代理，不需要开全局。如果还是有问题，再切到"全局"模式，但注意全局模式下访问国内网站也会变慢。
 
@@ -164,7 +169,7 @@ claude --dangerously-skip-permissions
 
 开启之后，界面底部会显示 `bypass permissions on`，说明已生效：
 
-![Claude Code 启动界面，bypass permissions on 已开启](./Claude%20Code启动界面.png)
+![Claude Code 启动界面，bypass permissions on 已开启](./Claude Code启动界面.png)
 
 ### 技巧二：先让它说计划，再放手让它干
 
