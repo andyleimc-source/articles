@@ -5,6 +5,8 @@ cover: ./imgs/cover.png
 
 # 国内用 Claude Code 的完整配置指南
 
+![封面](./imgs/cover.png)
+
 最近 Claude Code 突然火了。
 
 收藏量几万的教程到处都是，但评论区永远是同一批问题：装不上、报错、封号、根本不知道从哪里开始……
