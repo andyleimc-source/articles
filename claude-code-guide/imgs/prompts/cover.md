@@ -6,25 +6,25 @@ rendering: flat-vector
 text: title-only
 mood: bold
 font: clean
-aspect: "3:4"
+aspect: "16:9"
 language: zh
 watermark: false
 references: []
 ---
 
-A flat-vector conceptual cover image in cool blue tech palette. Bold mood, clean sans-serif font.
+A flat-vector conceptual cover image in cool blue tech palette, 16:9 wide landscape format. Bold mood, clean sans-serif font.
 
-The composition shows a vertical layered stack of four infrastructure blocks, each represented as a clean flat-vector icon tile:
-1. 梯子 (VPN/Ladder) — globe with signal waves
-2. 代理软件 (Proxy) — shield with routing arrows
-3. 账号 (Account) — person silhouette with checkmark
-4. 支付 (Payment) — credit card or gift card icon
+The composition is horizontal. Left side: a vertical stack of four labeled infrastructure blocks connected by downward arrows:
+1. 梯子 — globe with signal waves icon
+2. 代理软件 — shield with routing arrows icon
+3. 账号 — person silhouette with checkmark icon
+4. 支付 — gift card / credit card icon
 
-The four blocks are connected by downward arrows suggesting a setup flow. At the bottom, a glowing terminal window icon represents Claude Code launching successfully.
+Right side: a glowing terminal window showing "Claude Code" launching successfully, with a subtle rocket or launch motif above it suggesting "ready to go".
 
-Background: deep navy blue (#0A1628) with subtle grid pattern. Each block uses electric blue (#4A9EFF) and cyan (#00D4FF) accent colors on dark card backgrounds. Generous whitespace around each element.
+Background: deep navy (#0A1628) with subtle grid pattern. Blocks use electric blue (#4A9EFF) and cyan (#00D4FF) on dark card backgrounds. Generous whitespace.
 
-TITLE TEXT (MUST appear prominently at top): 国内用 Claude Code 的完整配置指南
-Title in bold clean sans-serif, white color, centered, top 20% of image.
+TITLE TEXT (MUST appear prominently): 国内用 Claude Code 的完整配置指南
+Title in bold clean sans-serif, white, positioned at top center or top left of the image.
 
-No realistic humans. Simplified silhouette icons only. 40-50% whitespace. Modern tech aesthetic suitable for WeChat Official Account cover.
+No realistic humans. Flat vector icons only. Modern tech aesthetic, suitable for WeChat and blog cover.
