@@ -1,8 +1,3 @@
----
-title: 国内用 Claude Code 的完整配置指南
-cover: ./imgs/cover.png
----
-
 # 国内用 Claude Code 的完整配置指南
 
 ![封面](./imgs/cover.png)
