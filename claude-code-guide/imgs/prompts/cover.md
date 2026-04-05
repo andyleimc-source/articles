@@ -1,10 +1,10 @@
 ---
 title: 国内用 Claude Code 的完整配置指南
-type: conceptual
-palette: cool
+type: minimal
+palette: mono
 rendering: flat-vector
 text: title-only
-mood: bold
+mood: subtle
 font: clean
 aspect: "16:9"
 language: zh
@@ -12,19 +12,20 @@ watermark: false
 references: []
 ---
 
-A flat-vector conceptual cover image in cool blue tech palette, 16:9 wide landscape format. Bold mood, clean sans-serif font.
+A minimal Notion-style cover image, 16:9 wide landscape format. Clean, airy, and elegant.
 
-The composition is horizontal. Left side: a vertical stack of four labeled infrastructure blocks connected by downward arrows:
-1. 梯子 — globe with signal waves icon
-2. 代理软件 — shield with routing arrows icon
-3. 账号 — person silhouette with checkmark icon
-4. 支付 — gift card / credit card icon
+White or very light warm gray background (#FAFAFA or #F7F6F3), reminiscent of a Notion page.
 
-Right side: a glowing terminal window showing "Claude Code" launching successfully, with a subtle rocket or launch motif above it suggesting "ready to go".
+Center composition: a few simple, hand-drawn-style line illustrations in black/dark gray, depicting the setup flow:
+- A small laptop icon with a terminal cursor blinking
+- A key icon (representing API Key)
+- A checkmark or rocket icon (representing "ready to launch")
 
-Background: deep navy (#0A1628) with subtle grid pattern. Blocks use electric blue (#4A9EFF) and cyan (#00D4FF) on dark card backgrounds. Generous whitespace.
+These icons are arranged horizontally with subtle connecting dotted lines or arrows between them, like a simple workflow diagram sketched on paper.
+
+The overall feel should be: minimal whitespace, sketch-like line art, warm neutral tones — exactly like Notion's default page covers or their blog illustrations.
 
 TITLE TEXT (MUST appear prominently): 国内用 Claude Code 的完整配置指南
-Title in bold clean sans-serif, white, positioned at top center or top left of the image.
+Title in clean sans-serif font (similar to Inter or system font), dark gray (#37352F), centered in the upper portion of the image. Subtitle below in lighter gray: 梯子 · 代理 · 账号 · 支付 · 一次配好
 
-No realistic humans. Flat vector icons only. Modern tech aesthetic, suitable for WeChat and blog cover.
+No photos, no gradients, no 3D effects, no neon colors. Pure Notion aesthetic: black line art on white/warm gray, maximum simplicity.
