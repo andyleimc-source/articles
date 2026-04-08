@@ -1,0 +1,69 @@
+{
+  "jobs": 2,
+  "tasks": [
+    {
+      "id": "02-comparison",
+      "promptFiles": ["prompts/02-comparison-panman.md"],
+      "image": "02-comparison-panman.png",
+      "ref": ["01-cover-panman.png"],
+      "ar": "9:16",
+      "quality": "2k"
+    },
+    {
+      "id": "03-flow",
+      "promptFiles": ["prompts/03-flow-panman.md"],
+      "image": "03-flow-panman.png",
+      "ref": ["01-cover-panman.png"],
+      "ar": "9:16",
+      "quality": "2k"
+    },
+    {
+      "id": "04-data",
+      "promptFiles": ["prompts/04-data-panman.md"],
+      "image": "04-data-panman.png",
+      "ref": ["01-cover-panman.png"],
+      "ar": "9:16",
+      "quality": "2k"
+    },
+    {
+      "id": "05-insight",
+      "promptFiles": ["prompts/05-insight-panman.md"],
+      "image": "05-insight-panman.png",
+      "ref": ["01-cover-panman.png"],
+      "ar": "9:16",
+      "quality": "2k"
+    },
+    {
+      "id": "06-taste",
+      "promptFiles": ["prompts/06-taste-panman.md"],
+      "image": "06-taste-panman.png",
+      "ref": ["01-cover-panman.png"],
+      "ar": "9:16",
+      "quality": "2k"
+    },
+    {
+      "id": "07-howto",
+      "promptFiles": ["prompts/07-howto-panman.md"],
+      "image": "07-howto-panman.png",
+      "ref": ["01-cover-panman.png"],
+      "ar": "9:16",
+      "quality": "2k"
+    },
+    {
+      "id": "08-tools",
+      "promptFiles": ["prompts/08-tools-panman.md"],
+      "image": "08-tools-panman.png",
+      "ref": ["01-cover-panman.png"],
+      "ar": "9:16",
+      "quality": "2k"
+    },
+    {
+      "id": "09-ending",
+      "promptFiles": ["prompts/09-ending-panman.md"],
+      "image": "09-ending-panman.png",
+      "ref": ["01-cover-panman.png"],
+      "ar": "9:16",
+      "quality": "2k"
+    }
+  ]
+}
