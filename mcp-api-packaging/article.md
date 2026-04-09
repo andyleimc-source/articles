@@ -1,196 +1,101 @@
-# 我用 Claude Code，把任何 API 文档变成了 AI 可以直接调用的工具
+# 把任何 API，变成 AI 可以直接操作的工具
 
-上周我做了一件事，做完之后自己愣了一下。
+<img src="image/cover.svg">
 
-我把腾讯广告的整个 API，358 个接口，全部变成了 Claude 可以直接调用的工具。整个过程，我没有写一行核心代码——Claude Code 写的。我只是喂了文档，盯着它干活，偶尔纠正方向。
+上周我在 Claude 里说了一句话：
 
-做完之后我在想：这件事以前需要多少时间？
+> "帮我查一下腾讯广告账户昨天的消耗，和上周同期对比一下。"
 
-一个靠谱的后端工程师，仔细读完 358 个接口的文档、写完所有封装代码、调试签名逻辑、处理错误返回——保守估计两周。现在，半天。
+Claude 停顿了两秒，然后给了我一张完整的对比表格，还附上了分析结论。
 
-我不是在夸 Claude，我是真的被这个速度吓到了。
+我没有打开任何广告后台。没有导出任何表格。没有写任何代码。
 
----
-
-## MCP 是什么，为什么你应该关心
-
-在说具体怎么做之前，先解释一个概念：**MCP（Model Context Protocol）**。
-
-这是 Anthropic 在 2024 年推出的开放标准，解决了一个很实际的问题：AI 助手怎么跟外部系统连接？
-
-以前的答案是"写插件"、"做 function calling"，每家 AI 都有自己的格式，对接一次就是一个项目。MCP 的出现，相当于给 AI 的外部连接定了一个标准接口——类似 USB 之于硬件。
-
-一旦你把一个 API 封装成 MCP 服务，**所有支持 MCP 的 AI 客户端都能直接用**：Claude Desktop、Cursor、Windsurf、以及未来更多工具。
-
-这意味着什么？
-
-你可以在 Claude 里直接说："帮我查一下这个广告账户昨天的消耗，和上周同期对比一下。"Claude 会自动调用腾讯广告 API，拿到数据，帮你分析，给你结论。你不需要打开任何广告后台，不需要导出任何表格。
-
-这不是演示，这是我今天实际在用的东西。
+这不是魔法——是我把腾讯广告的 API 接进了 Claude。接进的方式，叫 **MCP**。
 
 ---
 
-## 两个真实案例
+## 先说清楚：MCP 是什么
 
-在我讲方法之前，先讲两个我做出来的东西。
+你可以把 AI 助手（Claude、GPT 这类）想象成一个聪明绝顶的顾问。
 
-### 案例一：即梦 AI MCP（jimeng-ai-mcp）
+但这个顾问有个问题：**他只能动嘴，不能动手**。他知道怎么查广告数据，但没法替你登录后台操作；他知道怎么生成图片，但没法替你点击即梦的网页。
 
-即梦是字节跳动旗下的 AI 图片/视频生成平台，有官方的 Volcengine API。
+**MCP（Model Context Protocol）** 就是给这个顾问接上"手"的标准接口。
 
-我把它封装成了 MCP 服务，里面有 9 个工具：
+Anthropic（Claude 的母公司）在 2024 年推出了这个开放标准。一旦你把某个服务按 MCP 格式封装好，Claude 就能直接调用它——查数据、生成内容、操作系统，全部可以。
 
-- `generate_image`：文字生成图片，支持即梦 4.0、4.6 等多个模型
-- `image_to_image`：参考图改图
-- `inpaint_image`：局部重绘，涂掉哪里改哪里
-- `upscale_image`：低清图放大到 4K/8K
-- `generate_video`：文字生成视频
-- `image_to_video`：图片变视频，支持首尾帧驱动
-- `imitate_motion`：动作模仿，把参考视频的动作迁移到目标人物
-- `generate_digital_human`：图片 + 音频，生成口型同步的数字人视频
-- `translate_video`：视频翻译，保留原始音色，口型同步换语言
-
-现在我在 Claude 里生成图片，就是一句话的事："帮我生成一张宋代山水画风格的图，16:9，用即梦 4.0 模型"。Claude 直接出图，保存到本地。
-
-**GitHub：** https://github.com/andyleimc-source/jimeng-ai-mcp
-**安装：** `pip install jimeng-ai-mcp`（或 `uvx jimeng-ai-mcp`）
-
-### 案例二：腾讯广告 MCP（tencent-ad-mcp）
-
-这个工程量更大。腾讯广告的营销 API 3.0 有 358 个接口，覆盖广告账户、投放、素材、报表、受众……几乎所有操作。
-
-我同样把它封装成了 MCP，现在这 358 个工具都在 Claude 里待命。
-
-**GitHub：** https://github.com/andyleimc-source/tencent-ad-mcp
+用一个比喻：MCP 就像 USB 接口。你不需要为每个设备单独改电脑，统一接口，插上就用。
 
 ---
 
-## 原理：Claude Code 在这里做了什么
+## 我做了两个 MCP 工具，你可以直接用
 
-传统的 API 封装，本质上是体力活：读文档、写函数、处理参数、对齐格式、调试签名、写错误处理……每个接口都要重复一遍，枯燥且耗时。
+### 工具一：即梦 AI MCP
 
-Claude Code 的优势，恰好在这里。它能：
+**即梦**是字节跳动旗下的 AI 生图/生视频平台，效果很好，但一般要打开网页手动操作。
 
-1. **批量理解文档**：把整份 API 文档喂给它，它能理解每个接口的参数、返回值、必填项、枚举值
-2. **生成规范代码**：按照你定义的代码结构，一次性生成所有工具的封装
-3. **处理边界情况**：签名算法、错误码映射、异步轮询……这些烦人的细节它能处理
-4. **自我纠错**：遇到报错，给它看错误日志，它能定位问题重写
+我把它的 API 封装成了 MCP，现在 Claude 里可以直接说：
 
-整个流程的本质是：**你负责定方向和审核，Claude Code 负责执行**。
+> "帮我生成一张赛博朋克风格的城市夜景，16:9"
 
----
+Claude 自动调用即梦，生成完毕，图片保存到你本地，对话里直接显示。
 
-## 完整步骤：从 API 文档到可安装的工具包
+**包含 9 个工具：** 文生图、图生图、局部重绘、超清放大、文生视频、图生视频、动作模仿、数字人、视频翻译。
 
-下面是我实际走过的流程，你照着做就能复制。
-
-### 第一步：准备 API 文档
-
-找到你要封装的 API 的官方文档。越完整越好，至少要包含：
-- 接口地址和请求方式
-- 必填/选填参数及类型
-- 返回值结构
-- 鉴权方式（API Key、HMAC 签名等）
-
-把文档保存成本地文件，或者告诉 Claude Code 文档的 URL。
-
-### 第二步：建立项目结构
-
-用 Claude Code 创建一个标准的 MCP 项目结构。Python 项目通常是：
-
-```
-your-api-mcp/
-├── src/
-│   └── your_api_mcp/
-│       ├── server.py    # MCP 工具定义
-│       ├── client.py    # API 调用逻辑
-│       ├── auth.py      # 鉴权
-│       └── models.py    # 常量/模型标识符
-├── pyproject.toml       # 包配置
-├── .env.example
-└── README.md
-```
-
-告诉 Claude Code："用 Python + MCP SDK 创建一个项目骨架，用于封装 [你的 API 名称]"。
-
-### 第三步：实现鉴权
-
-这是最容易出错的地方。把 API 文档里的鉴权章节完整给 Claude Code，让它实现。
-
-对于复杂签名（比如 Volcengine 的 HMAC-SHA256 签名），可以说："照这个签名规范实现一个 build_signed_request 函数"，然后用官方提供的示例请求验证正确性。
-
-### 第四步：批量生成工具
-
-这是关键步骤，也是最省时间的地方。
-
-把所有接口的文档（或者按模块分批）给 Claude Code，说："按这个格式，为每个接口生成一个 MCP 工具函数"，然后给它看一个已经写好的示例工具。
-
-Claude Code 会按照你的模式，批量生成剩余所有接口的封装代码。
-
-**腾讯广告那个项目，358 个接口就是这样批量生成的。**
-
-### 第五步：发布到 GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial release"
-gh repo create your-api-mcp --public --push
-```
-
-### 第六步：发布到 PyPI（Python 项目）
-
-在 `pyproject.toml` 里配置好包名、版本、依赖，然后：
-
-```bash
-uv build
-uv publish
-```
-
-第一次发布需要 PyPI 账号和 token。发布成功后，别人就可以直接 `pip install your-api-mcp` 或 `uvx your-api-mcp` 使用。
-
-**设置 GitHub Actions 自动发布（推荐）：**
-
-创建 `.github/workflows/publish.yml`，配合 PyPI 的 Trusted Publisher，每次打 tag 自动发布：
-
-```yaml
-name: Publish to PyPI
-on:
-  push:
-    tags:
-      - "v*"
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v4
-      - run: uv build
-      - uses: pypa/gh-action-pypi-publish@release/v1
-```
-
-配置好之后，发新版本只需要两行：
-
-```bash
-git tag v0.2.0
-git push origin v0.2.0
-```
+👉 GitHub：https://github.com/andyleimc-source/jimeng-ai-mcp
 
 ---
 
-## 别人怎么用你做的 MCP 工具
+### 工具二：腾讯广告 MCP
 
-以即梦 MCP 为例，安装和配置只需要 5 分钟：
+腾讯广告的营销 API 有 358 个接口，我全部封装了进去。
 
-**1. 获取密钥**
+现在你可以在 Claude 里说：
 
-去火山引擎控制台开通对应服务，拿到 Access Key ID 和 Secret Access Key。
+> "帮我查最近 7 天各广告组的 CPM 和 CTR，找出效果最差的 3 个"
 
-**2. 配置 Claude Desktop**
+Claude 调用 API，拿数据，分析，给结论。不用打开任何后台。
 
-打开配置文件（macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`，Windows: `%APPDATA%\Claude\claude_desktop_config.json`），加入：
+**包含 358 个工具：** 广告账户、投放管理、素材、报表、受众……全覆盖。
+
+👉 GitHub：https://github.com/andyleimc-source/tencent-ad-mcp
+
+---
+
+## 怎么用这两个工具？
+
+### 第一步：安装
+
+这里要解释两个词：**pip** 和 **npx**。
+
+**pip** 是 Python 的"应用商店"命令行工具。你在终端输入 `pip install 包名`，就像在手机上点"下载"，会自动把软件装好。
+
+**npx** 是 Node.js（JavaScript 运行环境）的类似工具，输入 `npx 包名` 可以直接运行，甚至不用提前安装。
+
+- 即梦 MCP 用 Python 写的，安装命令：`pip install jimeng-ai-mcp`（或更推荐的 `uvx jimeng-ai-mcp`）
+- 腾讯广告 MCP 用 TypeScript 写的，使用命令：`npx tencent-ad-mcp`
+
+> 不懂这些也没关系，复制粘贴就行，终端会帮你搞定一切。
+
+---
+
+### 第二步：获取 API 密钥
+
+每个服务都需要你去对应平台申请密钥（证明你有权限调用）：
+
+- **即梦**：去[火山引擎控制台](https://console.volcengine.com/ai/ability/detail/2)开通服务，拿到 Access Key ID 和 Secret Access Key
+- **腾讯广告**：去[腾讯广告开发者平台](https://developers.e.qq.com/)申请 App ID 和 App Secret
+
+---
+
+### 第三步：配置 Claude Desktop
+
+打开这个文件（这是 Claude Desktop 的配置文件）：
+
+- **Mac**：`~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**：`%APPDATA%\Claude\claude_desktop_config.json`
+
+加入这段配置（**密钥填在这里**）：
 
 ```json
 {
@@ -199,46 +104,81 @@ git push origin v0.2.0
       "command": "uvx",
       "args": ["jimeng-ai-mcp"],
       "env": {
-        "JIMENG_ACCESS_KEY_ID": "你的密钥",
-        "JIMENG_SECRET_ACCESS_KEY": "你的密钥"
+        "JIMENG_ACCESS_KEY_ID": "你的密钥填这里",
+        "JIMENG_SECRET_ACCESS_KEY": "你的密钥填这里"
       }
     }
   }
 }
 ```
 
-**3. 重启 Claude Desktop，直接对话**
-
-> "帮我生成一段 10 秒的视频：一只狐狸在雪地里奔跑，慢镜头，电影感"
-
-Claude 自动调用接口，生成完保存到本地，对话里展示结果。
+保存，重启 Claude Desktop，就好了。
 
 ---
 
-## 这件事更大的意义
+### 第四步：直接对话
 
-说实话，我做这两个项目的时候，并没有太把它当回事。就是觉得"这个 API 能用，封装一下让 Claude 能调用挺好的"。
+重启后，Claude 对话框底部会出现一个小锤子图标，说明 MCP 工具已加载。
 
-但做完之后仔细想，这个模式本身值得认真对待。
+然后，就像平时聊天一样说话就好：
 
-**任何有 API 的服务，都可以这样变成 AI 可以直接操作的工具。**
+> "帮我生成一张宋代山水画风格的图，横版"
+> "查一下我昨天的广告数据，按点击率排序"
 
-不是一个，是所有。ERP、CRM、广告平台、电商后台、数据仓库、内部系统……只要有文档，只要有鉴权，用 Claude Code，半天到一天就能封装出来。
+---
 
-以前我们讲"AI 辅助工作"，大多数时候是 AI 帮你写写文档、改改代码、总结总结会议纪要。有用，但本质上还是人在操作系统，AI 在旁边递工具。
+## 你也可以做一个：用 Claude Code 封装任意 API
 
-MCP 改变了这个结构。**AI 开始直接操作系统，人退到指挥层。**
+这才是我真正想说的部分。
 
-你说指令，AI 查数据、跑接口、生成内容、整合结果——整个执行链路，AI 在里面跑。
+**任何有 API 文档的服务，都可以用同样的方式接入 Claude。**
 
-这不是未来。这是我今天用的工作方式。
+我用的工具叫 **Claude Code**，这是 Anthropic 推出的 AI 编程助手，在终端里运行。它能读懂 API 文档，然后直接帮你生成封装代码。
 
-> 任何还没有被 MCP 接入的 API，都是一个等待被解锁的超能力。
+整个过程是这样的：
+
+**1. 找到 API 文档**，把文档内容喂给 Claude Code
+
+**2. 让它创建项目结构**：
+> "帮我用 Python + MCP SDK 创建一个项目，封装这个 API"
+
+**3. 让它实现鉴权和接口**：
+> "按照这个签名文档实现请求函数，然后把这 20 个接口全部封装成 MCP 工具"
+
+**4. 发布到 GitHub**，让别人也能用
+
+**5. 发布到 pip/npm**，别人一行命令就能安装
+
+腾讯广告那 358 个接口，就是这样做出来的。Claude Code 批量生成，我来审核，发现问题让它改，来回几轮就完了。
+
+以前这种事需要一个后端工程师干两周。现在半天，一个人。
+
+---
+
+## 这件事意味着什么
+
+说实话，我刚开始做这两个项目的时候，只是觉得"好玩，顺手试试"。
+
+做完之后才反应过来，这个模式本身很重要。
+
+我们之前说"AI 辅助工作"，大多数还是 AI 在旁边帮你写写文字、改改文案。**人还是在操作系统，AI 在递工具。**
+
+MCP 改变了这个结构。Claude 开始直接操作系统，人退到了"说需求"这一层。
+
+你说指令，AI 查数据、调接口、生成内容、整合结果。整个执行链，AI 在里面跑。
+
+更关键的是：**封装这件事本身，现在也可以交给 AI 来做。**
+
+以前需要一个工程师才能接入的 API，现在一个不懂代码的产品经理、运营，用 Claude Code 喂文档，半天就能搞出来。
+
+这不是技术话题，这是效率和权力的重新分配。
+
+> 不会写代码，不代表你不能调用代码。会说话，就够了。
 
 ---
 
 **关于作者**
 
-<img src="image/author_avatar_andy.png" height="200">
+![作者头像](image/author_avatar_andy.png)
 
 **老雷（Andy）**，明道云 & Nocoly CMO，SaaS 行业从业十余年。骨子里是个产品人和技术迷，乔布斯的信徒，相信好的产品能改变世界。深度关注 AI、商业与科技趋势，目前在深度使用和实践 Claude Code，专注探索 AI 如何重塑产品形态和商业逻辑。不聊概念，只聊真实发生的事。

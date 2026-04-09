@@ -1,0 +1,3 @@
+Scene: A person sits at a glowing laptop in a cozy, dimly lit room. On the screen, multiple colorful API logos (WeChat, TikTok ads, image generation icons) flow as glowing streams into a single unified AI assistant interface. The streams converge into a bright portal labeled "MCP". The overall feeling is magical, effortless — like plugging in a power cable and suddenly everything lights up.
+
+Style: Clean flat vector illustration, Notion-style warm minimal aesthetic, soft gradient background (cream to light blue), thick friendly outlines, no text in image. Aspect ratio 2.35:1, suitable for article cover/hero image.

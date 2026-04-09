@@ -1,0 +1,101 @@
+<svg width="1200" height="510" viewBox="0 0 1200 510" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F0E8"/>
+      <stop offset="100%" style="stop-color:#E8F4F8"/>
+    </linearGradient>
+    <linearGradient id="portal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366F1"/>
+      <stop offset="100%" style="stop-color:#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="stream1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="stream2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="stream3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="stream4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:0.3"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="510" fill="url(#bg)"/>
+
+  <!-- Decorative dots grid -->
+  <g opacity="0.15">
+    <circle cx="80" cy="80" r="3" fill="#6366F1"/>
+    <circle cx="160" cy="80" r="3" fill="#6366F1"/>
+    <circle cx="80" cy="160" r="3" fill="#6366F1"/>
+    <circle cx="160" cy="160" r="3" fill="#6366F1"/>
+    <circle cx="1040" cy="80" r="3" fill="#6366F1"/>
+    <circle cx="1120" cy="80" r="3" fill="#6366F1"/>
+    <circle cx="1040" cy="160" r="3" fill="#6366F1"/>
+    <circle cx="1120" cy="160" r="3" fill="#6366F1"/>
+  </g>
+
+  <!-- API boxes on left -->
+  <!-- Box 1: Tencent Ads -->
+  <rect x="80" y="100" width="150" height="70" rx="14" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2.5"/>
+  <text x="155" y="128" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="11" font-weight="600" fill="#92400E">腾讯广告</text>
+  <text x="155" y="148" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="10" fill="#B45309">Marketing API</text>
+  <text x="155" y="163" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="10" fill="#B45309">358 接口</text>
+
+  <!-- Box 2: Jimeng -->
+  <rect x="80" y="210" width="150" height="70" rx="14" fill="#D1FAE5" stroke="#10B981" stroke-width="2.5"/>
+  <text x="155" y="238" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="11" font-weight="600" fill="#065F46">即梦 AI</text>
+  <text x="155" y="258" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="10" fill="#047857">图片 / 视频</text>
+  <text x="155" y="273" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="10" fill="#047857">9 个工具</text>
+
+  <!-- Box 3: Any API -->
+  <rect x="80" y="320" width="150" height="70" rx="14" fill="#EDE9FE" stroke="#8B5CF6" stroke-width="2.5"/>
+  <text x="155" y="348" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="11" font-weight="600" fill="#4C1D95">任意 API</text>
+  <text x="155" y="368" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="10" fill="#6D28D9">ERP / CRM</text>
+  <text x="155" y="383" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="10" fill="#6D28D9">数据平台…</text>
+
+  <!-- Flowing streams -->
+  <path d="M 230 135 Q 380 135 460 255" stroke="url(#stream1)" stroke-width="3" fill="none" stroke-dasharray="8,4" opacity="0.9"/>
+  <path d="M 230 245 Q 350 245 460 255" stroke="url(#stream2)" stroke-width="3" fill="none" opacity="0.9"/>
+  <path d="M 230 355 Q 380 355 460 255" stroke="url(#stream3)" stroke-width="3" fill="none" stroke-dasharray="8,4" opacity="0.9"/>
+
+  <!-- MCP Portal (center) -->
+  <circle cx="530" cy="255" r="70" fill="url(#portal)" filter="url(#glow)" opacity="0.15"/>
+  <circle cx="530" cy="255" r="52" fill="url(#portal)"/>
+  <text x="530" y="249" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="16" font-weight="700" fill="white">MCP</text>
+  <text x="530" y="269" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.85)">Model Context Protocol</text>
+
+  <!-- Output stream to Claude -->
+  <path d="M 582 255 Q 680 255 730 255" stroke="#6366F1" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366F1"/>
+    </marker>
+  </defs>
+
+  <!-- Claude box (right) -->
+  <rect x="730" y="185" width="380" height="140" rx="18" fill="white" stroke="#E5E7EB" stroke-width="2"/>
+  <rect x="730" y="185" width="380" height="48" rx="18" fill="#F9FAFB"/>
+  <rect x="730" y="209" width="380" height="24" fill="#F9FAFB"/>
+  <circle cx="762" cy="211" r="8" fill="#6366F1"/>
+  <text x="777" y="216" font-family="SF Pro, Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Claude</text>
+  <!-- Chat bubble -->
+  <rect x="750" y="248" width="340" height="30" rx="8" fill="#EEF2FF"/>
+  <text x="920" y="268" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="11" fill="#4338CA">帮我查昨天腾讯广告的消耗数据</text>
+  <rect x="750" y="288" width="260" height="30" rx="8" fill="#F0FDF4"/>
+  <text x="880" y="308" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="11" fill="#166534">✓ 已调用 API，正在分析结果…</text>
+
+  <!-- Title text -->
+  <text x="600" y="430" text-anchor="middle" font-family="SF Pro, Georgia, serif" font-size="26" font-weight="700" fill="#1F2937">把任何 API，变成 AI 可以直接操作的工具</text>
+  <text x="600" y="462" text-anchor="middle" font-family="SF Pro, Arial, sans-serif" font-size="14" fill="#6B7280">Claude Code × MCP — 半天时间，358 个接口全部接入</text>
+</svg>
