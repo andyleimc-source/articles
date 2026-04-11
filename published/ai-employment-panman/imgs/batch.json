@@ -1,0 +1,41 @@
+{
+  "jobs": 2,
+  "tasks": [
+    {
+      "id": "01-panman",
+      "promptFiles": ["prompts/01-panman.md"],
+      "image": "01-panman.webp",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "05-busier",
+      "promptFiles": ["prompts/05-busier.md"],
+      "image": "05-busier.webp",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "07-tool-matrix",
+      "promptFiles": ["prompts/07-tool-matrix.md"],
+      "image": "07-tool-matrix.webp",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "1:1",
+      "quality": "2k"
+    },
+    {
+      "id": "08-pioneer",
+      "promptFiles": ["prompts/08-pioneer.md"],
+      "image": "08-pioneer.webp",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    }
+  ]
+}

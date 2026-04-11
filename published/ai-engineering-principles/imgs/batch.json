@@ -1,0 +1,113 @@
+{
+  "jobs": 4,
+  "tasks": [
+    {
+      "id": "cover",
+      "promptFiles": ["prompts/00-framework-cover.md"],
+      "image": "00-framework-cover.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "3:2",
+      "quality": "2k"
+    },
+    {
+      "id": "decomposition",
+      "promptFiles": ["prompts/01-flowchart-decomposition.md"],
+      "image": "01-flowchart-decomposition.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "hard-constraint",
+      "promptFiles": ["prompts/02-comparison-hard-constraint.md"],
+      "image": "02-comparison-hard-constraint.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "validation",
+      "promptFiles": ["prompts/03-flowchart-validation.md"],
+      "image": "03-flowchart-validation.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "isolation",
+      "promptFiles": ["prompts/04-framework-isolation.md"],
+      "image": "04-framework-isolation.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "degradation",
+      "promptFiles": ["prompts/05-infographic-degradation.md"],
+      "image": "05-infographic-degradation.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "idempotency",
+      "promptFiles": ["prompts/06-infographic-idempotency.md"],
+      "image": "06-infographic-idempotency.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "checkpoint",
+      "promptFiles": ["prompts/07-timeline-checkpoint.md"],
+      "image": "07-timeline-checkpoint.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "dry-run",
+      "promptFiles": ["prompts/08-comparison-dry-run.md"],
+      "image": "08-comparison-dry-run.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "observability",
+      "promptFiles": ["prompts/09-infographic-observability.md"],
+      "image": "09-infographic-observability.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "rate-limit",
+      "promptFiles": ["prompts/10-framework-rate-limit.md"],
+      "image": "10-framework-rate-limit.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "rollback",
+      "promptFiles": ["prompts/11-comparison-rollback.md"],
+      "image": "11-comparison-rollback.png",
+      "provider": "google",
+      "model": "gemini-3-pro-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    }
+  ]
+}

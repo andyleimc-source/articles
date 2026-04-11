@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code 培训</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "苹方", "PingFang SC", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: #111318; color: #d0d8e4; overflow: hidden; height: 100vh;
+    }
+    .deck { width: 100vw; height: 100vh; position: relative; }
+    .slide {
+      position: absolute; inset: 0;
+      display: none; flex-direction: column;
+      justify-content: center;
+      padding: 46px 64px 52px;
+      background: #0f1117;
+    }
+    .slide.active { display: flex; }
+    .topbar { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    h1 { font-size: 2.75em; font-weight: 900; line-height: 1.05; color: #eef1f6; margin-bottom: 0.2em; letter-spacing: -0.02em; }
+    h2 { font-size: 1.6em; font-weight: 700; line-height: 1.15; color: #eef1f6; margin-bottom: 0.35em; letter-spacing: -0.01em; }
+    h3 { font-size: 1.1em; font-weight: 700; color: #eef1f6; margin-bottom: 0.2em; }
+    p, li { font-size: 0.95em; color: #b0b8c8; line-height: 1.6; }
+    ul { padding-left: 1.1em; }
+    ul li { margin-bottom: 0.15em; }
+    .a  { color: #7c85fa; }
+    .w  { color: #f08c4a; }
+    .b  { color: #5aa0f5; }
+    .g  { color: #3fc99e; }
+    .r  { color: #f06060; }
+    .m  { color: #5a6578; }
+    .h  { color: #eef1f6; }
+    .badge {
+      display: inline-block; font-size: 0.58em; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.28em 0.8em; border-radius: 9999px; border: 1px solid; margin-bottom: 0.7em;
+    }
+    .bp { background: rgba(124,133,250,0.1); color: #7c85fa; border-color: rgba(124,133,250,0.3); }
+    .bo { background: rgba(240,140,74,0.1); color: #f08c4a; border-color: rgba(240,140,74,0.3); }
+    .bg { background: rgba(63,201,158,0.1); color: #3fc99e; border-color: rgba(63,201,158,0.3); }
+    .bb { background: rgba(90,160,245,0.1); color: #5aa0f5; border-color: rgba(90,160,245,0.3); }
+    .br { background: rgba(240,96,96,0.1); color: #f06060; border-color: rgba(240,96,96,0.3); }
+    .card {
+      background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px; padding: 0.55em 0.9em; margin-bottom: 0.5em;
+    }
+    .ca { border-left: 3px solid #7c85fa; }
+    .cw { border-left: 3px solid #f08c4a; }
+    .cb { border-left: 3px solid #5aa0f5; }
+    .cg { border-left: 3px solid #3fc99e; }
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6em; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.55em; }
+    .g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5em; }
+    .cols { display: flex; gap: 1.5em; align-items: flex-start; }
+    .cols > * { flex: 1; }
+    .cols .cen-col { flex: 0 0 auto; align-self: center; text-align: center; }
+    code {
+      font-family: "SF Mono", Menlo, monospace; font-size: 0.85em; color: #5aa0f5;
+      background: rgba(90,160,245,0.08); padding: 0.1em 0.3em; border-radius: 4px;
+    }
+    pre {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+      border-left: 3px solid #7c85fa; border-radius: 6px;
+      padding: 0.35em 0.7em; margin: 0.25em 0; text-align: left;
+    }
+    pre code { background: none; border: none; padding: 0; font-size: 0.95em; color: #dde4ee; }
+    .bn { font-size: 1.9em; font-weight: 900; line-height: 1; color: #7c85fa; font-family: "SF Pro Display", Arial, sans-serif; }
+    .bnw { color: #f08c4a; }
+    .bnb { color: #5aa0f5; }
+    .bng { color: #3fc99e; }
+    .step { display: flex; align-items: flex-start; gap: 0.8em; margin-bottom: 0.65em; }
+    .sn { font-size: 1.6em; font-weight: 900; line-height: 1.1; color: #7c85fa; min-width: 1em; font-family: "SF Pro Display", Arial, sans-serif; }
+    .snw { color: #f08c4a; }
+    .sb p { margin: 0; font-size: 0.88em; color: #b0b8c8; }
+    .sb .t { font-weight: 700; color: #eef1f6; margin-bottom: 0.06em; }
+    .ls { font-size: 0.6em; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #5a6578; margin-bottom: 0.18em; display: block; }
+    .hr { height: 1px; background: rgba(255,255,255,0.07); margin: 0.7em 0; }
+    .qt { font-size: 1.45em; font-weight: 300; line-height: 1.5; color: #eef1f6; }
+    .qt em { color: #f08c4a; font-style: normal; }
+    .cen { text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; align-items: center; }
+    .cen-l { text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; }
+    .card-top-a  { border-top: 3px solid #7c85fa; }
+    .card-top-b  { border-top: 3px solid #a5b4fc; }
+    .card-top-bl { border-top: 3px solid #5aa0f5; }
+    .card-top-g  { border-top: 3px solid #3fc99e; }
+    .mt05 { margin-top: 0.35em; }
+    .mt08 { margin-top: 0.6em; }
+    .mb05 { margin-bottom: 0.4em; }
+    /* row layout: label + content */
+    .rrow { display: flex; gap: 1em; margin-bottom: 0.5em; align-items: flex-start; }
+    .rrow .rl { flex: 0 0 5.5em; font-size: 0.82em; color: #7c85fa; font-weight: 700; padding-top: 0.15em; white-space: nowrap; }
+    .rrow .rr { flex: 1; }
+    .tag { display: inline-block; font-size: 0.58em; font-weight: 700; padding: 0.2em 0.6em; border-radius: 4px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #5a6578; margin-right: 0.3em; }
+    /* controls */
+    #prev, #next {
+      position: fixed; bottom: 20px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); color: #5a6578; font-size: 18px;
+      width: 34px; height: 34px; border-radius: 50%; cursor: pointer; z-index: 100;
+      transition: all 0.15s; display: flex; align-items: center; justify-content: center;
+    }
+    #prev { right: 60px; }
+    #next { right: 18px; }
+    #prev:hover, #next:hover { background: rgba(124,133,250,0.15); color: #7c85fa; border-color: rgba(124,133,250,0.3); }
+    #pgnum { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); font-size: 11px; color: rgba(255,255,255,0.18); font-family: monospace; z-index: 100; letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- ══ 01 封面 ══ -->
+  <div class="slide active" id="s1">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#5aa0f5 50%,#f08c4a);"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 18% 60%,rgba(124,133,250,0.08) 0%,transparent 55%),radial-gradient(ellipse at 82% 20%,rgba(240,140,74,0.06) 0%,transparent 45%);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bp">内部培训 · 2026</span>
+      <h1>Claude <span class="a">Code</span></h1>
+      <h2 style="color:#5a6578;font-weight:400;">系统化培训课程</h2>
+      <p style="color:#5a6578;font-size:0.88em;margin-top:1.4em;">
+        讲师：Andy Lei &nbsp;·&nbsp; 250+ 小时使用经验<br>
+        适用：明道云业务团队
+      </p>
+    </div>
+  </div>
+
+  <!-- ══ 02 课程大纲 ══ -->
+  <div class="slide" id="s2">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#5aa0f5);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bp">Agenda</span>
+      <h2>课程大纲</h2>
+      <div class="g2 mt08">
+        <div>
+          <div class="step">
+            <div class="sn">01</div>
+            <div class="sb"><p class="t">认识工具</p><p>Claude Code 是什么、能做什么</p></div>
+          </div>
+          <div class="step">
+            <div class="sn">02</div>
+            <div class="sb"><p class="t">环境准备</p><p>Homebrew · Git · Node · 翻墙</p></div>
+          </div>
+          <div class="step">
+            <div class="sn">03</div>
+            <div class="sb"><p class="t">核心概念</p><p>MCP · Skills · 上下文 · 会话管理</p></div>
+          </div>
+          <div class="step">
+            <div class="sn">04</div>
+            <div class="sb"><p class="t">权限与安全</p><p>bypass 权限 · 安全边界</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="step">
+            <div class="sn snw">05</div>
+            <div class="sb"><p class="t">开发工具链</p><p>Git · HTML/CSS/JS · API</p></div>
+          </div>
+          <div class="step">
+            <div class="sn snw">06</div>
+            <div class="sb"><p class="t">常用 MCP</p><p>mdold · HAP · 邮件 · gog</p></div>
+          </div>
+          <div class="step">
+            <div class="sn snw">07</div>
+            <div class="sb"><p class="t">远程使用</p><p>Tailscale · SSH · Termius</p></div>
+          </div>
+          <div class="step">
+            <div class="sn snw">08</div>
+            <div class="sb"><p class="t">OpenClaw 生态</p><p>Claude Code + OpenClaw 互补共存</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 03 为什么学 ══ -->
+  <div class="slide" id="s3">
+    <div class="topbar" style="background:linear-gradient(90deg,#f08c4a,#7c85fa);"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 70% 35%,rgba(240,140,74,0.07) 0%,transparent 50%);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bo">Why</span>
+      <h1 style="margin-bottom:0.35em;">为什么学 <span class="a">Claude Code</span> ？</h1>
+      <p class="qt mb05">不是更<em>努力</em>，而是更<em>聪明</em></p>
+      <div class="cols mt08">
+        <div class="card" style="border-left-color:#f06060;">
+          <p class="ls" style="color:#f06060;">传统开发</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li>遇到报错：复制 → 粘贴 Google → 逐条尝试</li>
+            <li>写文档：对照模板，手动填充内容</li>
+            <li>调试：加 console.log → 刷新 → 改 → 再来</li>
+            <li>陌生接口：读英文文档，逐行理解</li>
+          </ul>
+        </div>
+        <div class="card cg">
+          <p class="ls" style="color:#3fc99e;">Claude Code 辅助</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li>遇到报错：直接截图/贴给 AI，分析并给出修复方案</li>
+            <li>写文档：描述需求，AI 生成初稿，你审核修改</li>
+            <li>调试：让 AI 分析日志，给你疑点排序</li>
+            <li>陌生接口：让 AI 先给你解读，再动手</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 04 Claude Code 是什么 ══ -->
+  <div class="slide" id="s4">
+    <div class="topbar" style="background:linear-gradient(90deg,#5aa0f5,#7c85fa);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bb">What</span>
+      <h2>Claude Code <span class="a">是什么</span></h2>
+      <div class="card ca mt08">
+        <p class="h" style="font-weight:700;margin-bottom:0.2em;">Anthropic 官方出品的本地 AI 编程 CLI 工具</p>
+        <p class="m" style="font-size:0.88em;">在终端里运行，直接访问你的项目文件、系统环境和网络，用自然语言指挥 AI 帮你写代码、读代码、改代码、跑命令。</p>
+      </div>
+      <div class="g3 mt08">
+        <div class="card cb" style="text-align:center;padding:0.5em 0.4em;">
+          <p style="font-size:1.6em;margin-bottom:0.1em;">💻</p>
+          <p class="h" style="font-weight:700;font-size:0.88em;">本地优先</p>
+          <p class="m" style="font-size:0.72em;">代码在本地，不上传云端</p>
+        </div>
+        <div class="card" style="border-left-color:#a5b4fc;text-align:center;padding:0.5em 0.4em;">
+          <p style="font-size:1.6em;margin-bottom:0.1em;">🔗</p>
+          <p class="h" style="font-weight:700;font-size:0.88em;">工具调用</p>
+          <p class="m" style="font-size:0.72em;">读写文件、执行命令、访问网络</p>
+        </div>
+        <div class="card cg" style="text-align:center;padding:0.5em 0.4em;">
+          <p style="font-size:1.6em;margin-bottom:0.1em;">🤝</p>
+          <p class="h" style="font-weight:700;font-size:0.88em;">伙伴协作</p>
+          <p class="m" style="font-size:0.72em;">自然语言驱动，适合 Code Review</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 05 环境准备 ══ -->
+  <div class="slide" id="s5">
+    <div class="topbar" style="background:linear-gradient(90deg,#3fc99e,#5aa0f5);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bg">Phase 1 · 环境</span>
+      <h2>环境准备清单</h2>
+      <div class="mt08" style="display:grid;grid-template-columns:1fr 1fr;gap:0.5em 1.2em;">
+        <div>
+          <div class="rrow">
+            <div class="rl">Homebrew</div>
+            <div class="rr">
+              <p class="m" style="font-size:0.82em;">macOS 必备包管理器</p>
+              <pre style="overflow-x:auto;white-space:pre-wrap;word-break:break-all;"><code style="font-size:0.72em;">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+            </div>
+          </div>
+          <div class="rrow">
+            <div class="rl">Node.js</div>
+            <div class="rr">
+              <pre><code>brew install node</code></pre>
+            </div>
+          </div>
+          <div class="rrow">
+            <div class="rl">Python</div>
+            <div class="rr">
+              <pre><code>brew install python git</code></pre>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="rrow">
+            <div class="rl" style="color:#f08c4a;">翻墙</div>
+            <div class="rr">
+              <p class="m" style="font-size:0.88em;">必须能访问 <code>api.anthropic.com</code></p>
+              <p class="m" style="font-size:0.8em;">建议准备代理工具和规则</p>
+            </div>
+          </div>
+          <div class="rrow">
+            <div class="rl" style="color:#5aa0f5;">编辑器</div>
+            <div class="rr">
+              <p class="m" style="font-size:0.88em;">VS Code（主力） + iTerm2（体验更好）</p>
+              <p class="m" style="font-size:0.8em;">或直接用 Mac 自带终端也可以</p>
+            </div>
+          </div>
+          <div class="rrow">
+            <div class="rl" style="color:#3fc99e;">Claude 账号</div>
+            <div class="rr">
+              <p class="m" style="font-size:0.88em;">需要有 API Key（Claude.ai → API Keys）</p>
+              <p class="m" style="font-size:0.8em;">或开通 Claude Pro 订阅</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 06 安装与启动 ══ -->
+  <div class="slide" id="s6">
+    <div class="topbar" style="background:linear-gradient(90deg,#3fc99e,#7c85fa);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bg">Phase 1 · 安装</span>
+      <h2>安装 & 启动 <span class="a">一条命令开始</span></h2>
+      <div class="mt08">
+        <div class="rrow">
+          <div class="rl">① 安装</div>
+          <div class="rr">
+            <pre><code>npm install -g @anthropic-ai/claude-code</code></pre>
+          </div>
+        </div>
+        <div class="rrow">
+          <div class="rl">② 配置 Key</div>
+          <div class="rr">
+            <pre><code>export ANTHROPIC_API_KEY=sk-ant-api03-xxxx  # 你的 Key</code></pre>
+            <p class="m" style="font-size:0.8em;margin-top:0.2em;">建议写到 <code>~/.zshrc</code> 或 <code>~/.bashrc</code> 里永久生效</p>
+          </div>
+        </div>
+        <div class="rrow">
+          <div class="rl">③ 启动</div>
+          <div class="rr">
+            <pre><code>claude</code></pre>
+          </div>
+        </div>
+        <div class="rrow">
+          <div class="rl" style="color:#f08c4a;">⚠️</div>
+          <div class="rr">
+            <p class="m" style="font-size:0.88em;">首次启动会请求「辅助功能权限」，在「系统设置 → 隐私与安全性 → 辅助功能」里允许 Terminal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 07 核心概念 — MCP ══ -->
+  <div class="slide" id="s7">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#5aa0f5);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bp">核心概念 ①</span>
+      <h2>MCP — <span class="a">Model Context Protocol</span></h2>
+      <div class="card ca mt08">
+        <p class="h" style="font-weight:700;margin-bottom:0.2em;">一句话理解 MCP</p>
+        <p class="m">AI 的"USB 接口"——统一协议，让 AI 能调用各种外部工具（数据库、API、文件系统）而无需每个工具单独适配。</p>
+      </div>
+      <div class="g2 mt08">
+        <div class="card" style="border-left-color:#a5b4fc;">
+          <p class="h" style="font-weight:700;font-size:0.9em;margin-bottom:0.2em;">MCP 之前</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li>每个工具 → 单独写插件/集成</li>
+            <li>接口不统一，维护成本高</li>
+            <li>工具之间数据不互通</li>
+          </ul>
+        </div>
+        <div class="card cg">
+          <p class="h" style="font-weight:700;font-size:0.9em;margin-bottom:0.2em;">MCP 之后</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li>一个协议 → 连接所有工具</li>
+            <li>工具按需加载，动态发现</li>
+            <li>上下文自动共享，数据流转顺畅</li>
+          </ul>
+        </div>
+      </div>
+      <p class="m mt08" style="font-size:0.8em;">Claude Code 内置 MCP 客户端，只需配置 Server 地址即可使用</p>
+    </div>
+  </div>
+
+  <!-- ══ 08 核心概念 — Skills ══ -->
+  <div class="slide" id="s8">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#5aa0f5);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bp">核心概念 ②</span>
+      <h2>Skills — <span class="a">封装好的工具流程</span></h2>
+      <div class="card ca mt08">
+        <p class="h" style="font-weight:700;margin-bottom:0.2em;">什么是 Skill</p>
+        <p class="m">一系列预设的工具调用步骤 + 提示词模板，打包成一个"技能"，一键调用。比如「生成 PPT」Skill，包含：确定大纲 → 读取风格规范 → 生成内容 → 输出 HTML。</p>
+      </div>
+      <div class="g3 mt08">
+        <div class="card" style="border-left-color:#a5b4fc;padding:0.5em 0.8em;">
+          <p class="h" style="font-weight:700;font-size:0.88em;color:#a5b4fc;margin-bottom:0.15em;">Skill 的优势</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li>开箱即用</li>
+            <li>减少重复描述</li>
+            <li>输出质量稳定</li>
+          </ul>
+        </div>
+        <div class="card" style="border-left-color:#5aa0f5;padding:0.5em 0.8em;">
+          <p class="h" style="font-weight:700;font-size:0.88em;color:#5aa0f5;margin-bottom:0.15em;">Skill 的来源</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li>内置 Skill（官方提供）</li>
+            <li>社区 Skill（clawhub.ai）</li>
+            <li>自建 Skill（SKILL.md）</li>
+          </ul>
+        </div>
+        <div class="card cg" style="padding:0.5em 0.8em;">
+          <p class="h" style="font-weight:700;font-size:0.88em;color:#3fc99e;margin-bottom:0.15em;">Skill 示例</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li>ppt-generator：生成 PPT</li>
+            <li>video-frames：视频截帧</li>
+            <li>1password：密钥管理</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 09 核心概念 — 上下文管理 ══ -->
+  <div class="slide" id="s9">
+    <div class="topbar" style="background:linear-gradient(90deg,#5aa0f5,#7c85fa);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bb">核心概念 ③</span>
+      <h2>上下文管理 — <span class="a">持久记忆文件</span></h2>
+      <div class="g2 mt08">
+        <div class="card ca">
+          <p class="bn" style="margin-bottom:0.15em;">CLAUDE.md</p>
+          <p class="h" style="font-weight:700;font-size:0.88em;margin-bottom:0.15em;">项目指令文件</p>
+          <p class="m" style="font-size:0.8em;">Claude Code 启动时自动读取工作目录及父目录下的 CLAUDE.md，也读取全局 ~/.claude/CLAUDE.md。用于定义项目规范、编码风格、常用命令等。</p>
+          <div class="hr"></div>
+          <p class="m" style="font-size:0.75em;">示例：指定代码风格、测试框架、禁止操作的目录等约束。</p>
+        </div>
+        <div class="card cg">
+          <p class="bn bng" style="margin-bottom:0.15em;">memory/ 自动记忆</p>
+          <p class="h" style="font-weight:700;font-size:0.88em;margin-bottom:0.15em;">跨会话持久记忆</p>
+          <p class="m" style="font-size:0.8em;">由记忆插件（如 superpowers auto-memory）管理，保存在 ~/.claude/projects/ 下。Claude 自动写入和读取，记录用户偏好、项目决策、行为反馈等。</p>
+          <div class="hr"></div>
+          <p class="m" style="font-size:0.75em;">示例：记录用户的服务器 IP、常用工具偏好、项目架构决策。</p>
+        </div>
+      </div>
+      <div class="card" style="border-left-color:#f08c4a;margin-top:0.5em;padding:0.4em 0.9em;">
+        <p class="m" style="font-size:0.8em;">⚠️ <strong>注意：</strong>SOUL.md、AGENTS.md、USER.md、HEARTBEAT.md 是 <strong>OpenClaw</strong> 体系的文件，不是 Claude Code 原生功能。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 10 核心概念 — 会话管理 ══ -->
+  <div class="slide" id="s10">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#f08c4a);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bp">核心概念 ④</span>
+      <h2>会话管理 — <span class="a">Main vs Sub</span></h2>
+      <div class="g2 mt08">
+        <div class="card ca" style="padding:0.7em 1em;">
+          <p class="h" style="font-weight:900;font-size:1.05em;color:#7c85fa;margin-bottom:0.2em;">Main Session</p>
+          <p class="m" style="font-size:0.82em;margin-bottom:0.3em;">主会话，一次只做一个任务，适合深度工作</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li>串行执行，一个任务做完再做下一个</li>
+            <li>上下文完全共享</li>
+            <li>适合复杂、需要多轮迭代的工作</li>
+          </ul>
+        </div>
+        <div class="card" style="border-left-color:#f08c4a;padding:0.7em 1em;">
+          <p class="h" style="font-weight:900;font-size:1.05em;color:#f08c4a;margin-bottom:0.2em;">Sub Session</p>
+          <p class="m" style="font-size:0.82em;margin-bottom:0.3em;">子会话，并行跑多个任务，适合批量工作</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li>通过 <code>Agent(task="...")</code> 启动（Claude Code 原生）</li>
+            <li>独立上下文，互不干扰</li>
+            <li>适合同时做多件事（如同时读多个文件）</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="border-left-color:#5aa0f5;margin-top:0.6em;padding:0.5em 0.9em;">
+        <p class="h" style="font-weight:700;margin-bottom:0.15em;"><code>when to use?</code></p>
+        <p class="m" style="font-size:0.85em;">需要同时分析多个模块 → Sub Session 并行 &nbsp;|&nbsp; 一个功能从头做到尾 → Main Session</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 11 CLI 必须会的命令 ══ -->
+  <div class="slide" id="s11">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#5aa0f5);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bg">Must Know</span>
+      <h2>CLI <span class="a">常用命令</span> 全解析</h2>
+      <div class="g2 mt07">
+        <div>
+          <p class="ls" style="color:#7c85fa;margin-bottom:0.12em;">🚀 启动 &amp; 参数</p>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn">1</div>
+            <div class="sb"><p class="t"><code>claude</code></p><p class="m" style="font-size:0.7em;">启动 CLI，当前目录作为 workspace</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn">2</div>
+            <div class="sb"><p class="t"><code>claude "指令"</code></p><p class="m" style="font-size:0.7em;">单行模式，直接执行一条后退出（脚本调用）</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn">3</div>
+            <div class="sb"><p class="t"><code>claude --help</code></p><p class="m" style="font-size:0.7em;">查看完整 CLI 参数列表</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn snw">4</div>
+            <div class="sb"><p class="t"><code>claude -h</code></p><p class="m" style="font-size:0.7em;">等同于 --help，简洁版帮助</p></div>
+          </div>
+          <p class="ls" style="color:#5aa0f5;margin-bottom:0.12em;margin-top:0.3em;">⚡ 核心 / 命令</p>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn" style="color:#f08c4a;">/clear</div>
+            <div class="sb"><p class="m" style="font-size:0.72em;">清除上下文，开启新会话</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn" style="color:#3fc99e;">/compact</div>
+            <div class="sb"><p class="m" style="font-size:0.72em;">压缩上下文，释放 Token 空间，保留关键信息继续对话</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn" style="color:#a5b4fc;">/resume</div>
+            <div class="sb"><p class="m" style="font-size:0.72em;">恢复历史会话，从中断处继续</p></div>
+          </div>
+        </div>
+        <div>
+          <p class="ls" style="color:#f08c4a;margin-bottom:0.12em;">🔍 模型 &amp; 插件命令</p>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn" style="color:#5aa0f5;">/model</div>
+            <div class="sb"><p class="m" style="font-size:0.72em;">切换模型（Opus / Sonnet / Haiku）</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn" style="color:#7c85fa;">/commit</div>
+            <div class="sb"><p class="m" style="font-size:0.72em;">提交 Git 改动（需安装 superpowers 插件）</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn" style="color:#3fc99e;">/memory</div>
+            <div class="sb"><p class="m" style="font-size:0.72em;">查看当前会话加载的记忆文件列表</p></div>
+          </div>
+          <p class="ls" style="color:#7c85fa;margin-bottom:0.12em;margin-top:0.3em;">🛠 核心工具命令</p>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn" style="color:#f06060;">Bash</div>
+            <div class="sb"><p class="t" style="font-size:0.78em;"><code>Bash(command)</code></p><p class="m" style="font-size:0.7em;">对话内执行终端命令，读写文件、跑脚本、查日志</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.18em;">
+            <div class="sn" style="color:#f06060;">Agent</div>
+            <div class="sb"><p class="t" style="font-size:0.78em;"><code>Agent(task="...")</code></p><p class="m" style="font-size:0.7em;">启动并行子 Agent，独立任务隔离执行（Claude Code 原生）</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ══ 12 权限与安全 ══ -->
+  <div class="slide" id="s12">
+    <div class="topbar" style="background:linear-gradient(90deg,#f06060,#f08c4a);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge br">⚠️ 安全</span>
+      <h2>权限开通 & <span class="r">安全边界</span></h2>
+      <div class="cols mt08">
+        <div style="flex:1.2;">
+          <div class="card ca" style="margin-bottom:0.6em;">
+            <p class="h" style="font-weight:700;margin-bottom:0.15em;">系统权限（辅助功能）</p>
+            <p class="m" style="font-size:0.85em;">允许 Claude Code 控制其他应用、模拟按键、读取屏幕</p>
+            <p class="m" style="font-size:0.8em;margin-top:0.2em;">路径：系统设置 → 隐私与安全性 → 辅助功能 → 添加 Terminal</p>
+          </div>
+          <div class="card cg" style="margin-bottom:0.6em;">
+            <p class="h" style="font-weight:700;margin-bottom:0.15em;">全盘访问（可选）</p>
+            <p class="m" style="font-size:0.85em;">允许访问所有文件，默认只读写当前工作目录</p>
+          </div>
+          <div class="card" style="border-left-color:#5aa0f5;">
+            <p class="h" style="font-weight:700;margin-bottom:0.15em;">网络访问</p>
+            <p class="m" style="font-size:0.85em;">访问 URL、发送请求，默认关闭，需要时单独授权</p>
+          </div>
+        </div>
+        <div style="flex:0.9;">
+          <div class="card cw" style="background:rgba(240,140,74,0.06);border-left-width:4px;">
+            <p class="ls" style="color:#f08c4a;margin-bottom:0.2em;">bypass permission</p>
+            <p class="h" style="font-weight:700;margin-bottom:0.15em;"><code>bypass permission on</code></p>
+            <p class="m" style="font-size:0.82em;margin-bottom:0.25em;">跳过所有命令执行确认</p>
+            <p class="r" style="font-size:0.78em;font-weight:700;">⚠️ 仅限确认安全的命令使用！</p>
+          </div>
+          <div class="card" style="border-left-color:#f06060;margin-top:0.5em;padding:0.5em 0.8em;">
+            <p class="ls" style="color:#f06060;">安全建议</p>
+            <ul style="margin:0.2em 0 0;padding-left:1em;">
+              <li class="m" style="font-size:0.8em;">工作区限定在项目目录</li>
+              <li class="m" style="font-size:0.8em;">陌生仓库先用 <code>Read</code> 不急着 <code>Write</code></li>
+              <li class="m" style="font-size:0.8em;">敏感操作加确认步骤</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 13 开发工具链 ══ -->
+  <div class="slide" id="s13">
+    <div class="topbar" style="background:linear-gradient(90deg,#f08c4a,#3fc99e);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bo">Tools</span>
+      <h2>开发工具链全景图</h2>
+      <p class="m" style="font-size:0.85em;margin-bottom:0.35em;">Claude Code 能深度介入的环节，标 🔵 的地方都是它能帮你提速的地方</p>
+      <div class="g4 mt05">
+        <div class="card card-top-a" style="text-align:center;padding:0.5em 0.35em;">
+          <p class="bn" style="margin-bottom:0.08em;">01</p>
+          <p class="h" style="font-weight:700;font-size:0.82em;margin-bottom:0.08em;">🔵 Git</p>
+          <p class="m" style="font-size:0.7em;">写 commit 信息<br>帮你分析 diff<br>处理冲突</p>
+        </div>
+        <div class="card card-top-b" style="text-align:center;padding:0.5em 0.35em;">
+          <p class="bn" style="color:#a5b4fc;margin-bottom:0.08em;">02</p>
+          <p class="h" style="font-weight:700;font-size:0.82em;margin-bottom:0.08em;">🔵 HTML/CSS/JS</p>
+          <p class="m" style="font-size:0.7em;">生成页面结构<br>写 CSS 样式<br>调试 JS 报错</p>
+        </div>
+        <div class="card card-top-bl" style="text-align:center;padding:0.5em 0.35em;">
+          <p class="bn bnb" style="margin-bottom:0.08em;">03</p>
+          <p class="h" style="font-weight:700;font-size:0.82em;margin-bottom:0.08em;">🔵 API & JSON</p>
+          <p class="m" style="font-size:0.7em;">解析接口文档<br>生成请求代码<br>读写数据文件</p>
+        </div>
+        <div class="card card-top-g" style="text-align:center;padding:0.5em 0.35em;">
+          <p class="bn bng" style="margin-bottom:0.08em;">04</p>
+          <p class="h" style="font-weight:700;font-size:0.82em;margin-bottom:0.08em;">Python / 脚本</p>
+          <p class="m" style="font-size:0.7em;">数据处理脚本<br>自动化小工具<br>批处理文件</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 14 MCP — mdold 明道云 ══ -->
+  <div class="slide" id="s14">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#5aa0f5);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bp">MCP ①</span>
+      <h2>mdold — <span class="a">明道云 MCP</span></h2>
+      <div class="card ca mt08">
+        <p class="h" style="font-weight:700;margin-bottom:0.15em;">一句话</p>
+        <p class="m">明道云官方 MCP，让 AI 直接操作任务、日历、消息、群组、审批等核心模块。无需手动调 API，AI 替你完成增删改查。</p>
+      </div>
+      <div class="g2 mt08">
+        <div>
+          <p class="ls" style="color:#7c85fa;">可用功能（按模块）</p>
+          <div class="card cb" style="display:flex;justify-content:space-between;align-items:center;padding:0.4em 0.8em;">
+            <div><p class="h" style="font-weight:700;font-size:0.88em;">任务 · TASK</p><p class="m" style="font-size:0.75em;">创建 / 更新 / 完成 / 删除任务</p></div>
+            <span class="tag">高频</span>
+          </div>
+          <div class="card cb" style="display:flex;justify-content:space-between;align-items:center;padding:0.4em 0.8em;">
+            <div><p class="h" style="font-weight:700;font-size:0.88em;">日历 · CALENDAR</p><p class="m" style="font-size:0.75em;">创建日程 / 邀请成员 / 修改时间</p></div>
+            <span class="tag">高频</span>
+          </div>
+          <div class="card" style="border-left-color:#5aa0f5;display:flex;justify-content:space-between;align-items:center;padding:0.4em 0.8em;">
+            <div><p class="h" style="font-weight:700;font-size:0.88em;">消息 · CHAT</p><p class="m" style="font-size:0.75em;">发送消息 / 获取会话列表</p></div>
+            <span class="tag">中频</span>
+          </div>
+          <div class="card" style="border-left-color:#a5b4fc;display:flex;justify-content:space-between;align-items:center;padding:0.4em 0.8em;">
+            <div><p class="h" style="font-weight:700;font-size:0.88em;">群组 · GROUP</p><p class="m" style="font-size:0.75em;">创建群组 / 获取成员 / 审核申请</p></div>
+            <span class="tag">中频</span>
+          </div>
+        </div>
+        <div>
+          <p class="ls" style="color:#3fc99e;">典型使用场景</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li class="m" style="font-size:0.82em;margin-bottom:0.3em;">"帮我把所有待验收的任务标记为完成"</li>
+            <li class="m" style="font-size:0.82em;margin-bottom:0.3em;">"创建一个明天上午10点的日程，邀请张三和李四"</li>
+            <li class="m" style="font-size:0.82em;margin-bottom:0.3em;">"把超过3天没更新的任务负责人找出来"</li>
+            <li class="m" style="font-size:0.82em;">"在群里发一条通知：本周五下午3点开会"</li>
+          </ul>
+          <div class="hr"></div>
+          <p class="m" style="font-size:0.78em;">配置方式：在 Claude Code 里添加 <code>mcpServer</code> 地址，填入明道云的机构代码即可。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 15 MCP — HAP 明道云HAP ══ -->
+  <div class="slide" id="s15">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#f08c4a);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bp">MCP ②</span>
+      <h2>HAP — <span class="a">明道云 HAP（零代码平台）MCP</span></h2>
+      <div class="card ca mt08">
+        <p class="h" style="font-weight:700;margin-bottom:0.15em;">一句话</p>
+        <p class="m">明道云 HAP（Heybits Automation Platform）零代码平台 MCP，AI 可以直接读写工作表记录、管理视图、触发自动化流程、执行 JavaScript/Python 脚本。</p>
+      </div>
+      <div class="g2 mt08">
+        <div>
+          <p class="ls" style="color:#7c85fa;">核心能力</p>
+          <div class="card cb" style="padding:0.4em 0.8em;">
+            <p class="h" style="font-weight:700;font-size:0.88em;">📋 工作表操作</p>
+            <p class="m" style="font-size:0.78em;">新增/删除记录 · 修改字段 · 查询过滤 · 批量导入导出</p>
+          </div>
+          <div class="card" style="border-left-color:#a5b4fc;padding:0.4em 0.8em;">
+            <p class="h" style="font-weight:700;font-size:0.88em;">🔍 视图与筛选</p>
+            <p class="m" style="font-size:0.78em;">切换视图 · 读取筛选条件 · 获取分组聚合数据</p>
+          </div>
+          <div class="card" style="border-left-color:#f08c4a;padding:0.4em 0.8em;">
+            <p class="h" style="font-weight:700;font-size:0.88em;">⚙️ 自动化 & 脚本</p>
+            <p class="m" style="font-size:0.78em;">触发自动化流程 · 执行 JS/Python 脚本片段</p>
+          </div>
+          <div class="card cg" style="padding:0.4em 0.8em;">
+            <p class="h" style="font-weight:700;font-size:0.88em;">📊 仪表盘</p>
+            <p class="m" style="font-size:0.78em;">读取统计图表数据 · 导出报表</p>
+          </div>
+        </div>
+        <div>
+          <p class="ls" style="color:#3fc99e;">典型使用场景</p>
+          <ul style="margin:0;padding-left:1em;">
+            <li class="m" style="font-size:0.82em;margin-bottom:0.25em;">"帮我把销售线索表里状态是「待联系」的记录，批量更新「最近联系时间」为今天"</li>
+            <li class="m" style="font-size:0.82em;margin-bottom:0.25em;">"生成一个统计视图，显示本周新增客户数量"</li>
+            <li class="m" style="font-size:0.82em;margin-bottom:0.25em;">"当 CRM 里新增一个高优先级客户时，自动给我发一条消息"</li>
+            <li class="m" style="font-size:0.82em;">"把 Excel 数据批量导入维格表"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 16 MCP — 邮件 & gog ══ -->
+  <div class="slide" id="s16">
+    <div class="topbar" style="background:linear-gradient(90deg,#5aa0f5,#3fc99e);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bb">MCP ③ ④</span>
+      <h2>邮件 MCP & <span class="a">gog 全家桶</span></h2>
+      <div class="cols mt08">
+        <div>
+          <p class="ls" style="color:#5aa0f5;">邮件 MCP（Outlook / 网易邮箱）</p>
+          <div class="card cb" style="margin-bottom:0.4em;">
+            <p class="h" style="font-weight:700;font-size:0.88em;margin-bottom:0.1em;">邮件管理</p>
+            <ul style="margin:0.1em 0 0;padding-left:1em;">
+              <li class="m" style="font-size:0.78em;">读取收件箱 / 指定文件夹</li>
+              <li class="m" style="font-size:0.78em;">发送邮件（带附件）</li>
+              <li class="m" style="font-size:0.78em;">标记已读 / 未读 / 重要</li>
+              <li class="m" style="font-size:0.78em;">按发件人/主题/日期搜索</li>
+            </ul>
+          </div>
+          <div class="card" style="border-left-color:#a5b4fc;">
+            <p class="h" style="font-weight:700;font-size:0.88em;margin-bottom:0.1em;">日历管理</p>
+            <ul style="margin:0.1em 0 0;padding-left:1em;">
+              <li class="m" style="font-size:0.78em;">查看日历事件</li>
+              <li class="m" style="font-size:0.78em;">创建日历邀请</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <p class="ls" style="color:#3fc99e;">Google MCP（两个独立 MCP）</p>
+          <div class="card cg" style="margin-bottom:0.4em;">
+            <p class="h" style="font-weight:700;font-size:0.88em;margin-bottom:0.1em;">claude.ai Gmail</p>
+            <p class="m" style="font-size:0.78em;">搜索邮件 · 发送 · 标记星标 · 归档</p>
+          </div>
+          <div class="card" style="border-left-color:#5aa0f5;">
+            <p class="h" style="font-weight:700;font-size:0.88em;margin-bottom:0.1em;">claude.ai Google Calendar</p>
+            <p class="m" style="font-size:0.78em;">创建/修改/删除日程 · 查看日程列表</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 17 Skills ① baoyu + superpowers -->
+  <div class="slide" id="s17">
+    <div class="topbar" style="background:linear-gradient(90deg,#a5b4fc,#7c85fa);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bp">Skills 重点推荐</span>
+      <h2><span class="a">baoyu-skills</span> &amp; <span class="a">superpowers</span></h2>
+      <div class="g2 mt08">
+        <div>
+          <p class="ls" style="color:#f08c4a;margin-bottom:0.15em;">🎨 baoyu-skills · 宝玉出品</p>
+          <p class="m" style="font-size:0.72em;margin-bottom:0.25em;">内容生成·图片创作·社媒发布·AI后端 &nbsp;·&nbsp; 安装：<code>npx skills add jimliu/baoyu-skills</code></p>
+          <div class="card ca" style="padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.8em;color:#7c85fa;margin-bottom:0.08em;">📸 图像生成 · baoyu-imagine</p>
+            <p class="m" style="font-size:0.72em;">OpenAI / Google / 阿里通义 / MiniMax / 即梦 / 豆包 — 一条命令生成</p>
+          </div>
+          <div class="card" style="border-left-color:#f08c4a;padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.8em;color:#f08c4a;margin-bottom:0.08em;">🖼 视觉内容</p>
+            <p class="m" style="font-size:0.72em;">小红书图 · 信息图（17种风格+20种布局）· 封面图 · 幻灯片 · 知识漫画 · 文章插图</p>
+          </div>
+          <div class="card" style="border-left-color:#3fc99e;padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.8em;color:#3fc99e;margin-bottom:0.08em;">📤 社媒发布</p>
+            <p class="m" style="font-size:0.72em;">微信公众号 · 微博 · X/Twitter — 浏览器或 API 两种模式</p>
+          </div>
+          <div class="card" style="border-left-color:#5aa0f5;padding:0.35em 0.7em;">
+            <p class="h" style="font-weight:700;font-size:0.8em;color:#5aa0f5;margin-bottom:0.08em;">🛠 内容处理</p>
+            <p class="m" style="font-size:0.72em;">YouTube字幕 · URL抓取Markdown · X内容下载 · 图片压缩 · 翻译</p>
+          </div>
+        </div>
+        <div>
+          <p class="ls" style="color:#3fc99e;margin-bottom:0.15em;">🚀 superpowers · 研发流程标准</p>
+          <p class="m" style="font-size:0.72em;margin-bottom:0.25em;">Spec-First · TDD · Subagent驱动 · 产出设计文档 &nbsp;·&nbsp; 安装：<code>npx skills add obra/superpowers</code></p>
+          <div class="card cg" style="padding:0.3em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#3fc99e;margin-bottom:0.1em;">Pipeline</p>
+            <p class="m" style="font-size:0.72em;">Idea → <strong style="color:#eef1f6;">Brainstorm</strong> → <strong style="color:#eef1f6;">Plan</strong> → <strong style="color:#eef1f6;">Subagent Build (TDD)</strong> → <strong style="color:#eef1f6;">Review</strong> → 完成分支</p>
+          </div>
+          <div class="step" style="margin-bottom:0.2em;">
+            <div class="sn" style="font-size:0.88em;min-width:0.85em;">①</div>
+            <div class="sb"><p class="t" style="font-size:0.8em;">Brainstorm</p><p class="m" style="font-size:0.7em;">澄清需求、探索方案，写设计文档，批准后才写代码</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.2em;">
+            <div class="sn" style="font-size:0.88em;min-width:0.85em;color:#5aa0f5;">②</div>
+            <div class="sb"><p class="t" style="font-size:0.8em;">Plan</p><p class="m" style="font-size:0.7em;">任务级实现计划 → 保存到 <code>docs/plans/</code></p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.2em;">
+            <div class="sn" style="font-size:0.88em;min-width:0.85em;color:#a5b4fc;">③</div>
+            <div class="sb"><p class="t" style="font-size:0.8em;">Subagent Build</p><p class="m" style="font-size:0.7em;"><code>sessions_spawn</code> 并行执行，每任务严格 TDD 红绿重构</p></div>
+          </div>
+          <div class="step" style="margin-bottom:0.2em;">
+            <div class="sn snw" style="font-size:0.88em;min-width:0.85em;">④</div>
+            <div class="sb"><p class="t" style="font-size:0.8em;">Review &amp; 交付</p><p class="m" style="font-size:0.7em;">Spec审核 → 代码质量审核 → PR/Merge</p></div>
+          </div>
+          <div class="card" style="border-left-color:#f08c4a;padding:0.3em 0.7em;margin-top:0.2em;">
+            <p class="m" style="font-size:0.7em;"><strong style="color:#f08c4a;">适用：</strong>新功能开发，Bug调试、架构设计，重构 — 任何需要「先想清楚再动手」的场景</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 18 Skills ② 其他常用 + Office替代方案 -->
+  <div class="slide" id="s18">
+    <div class="topbar" style="background:linear-gradient(90deg,#5aa0f5,#7c85fa);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bb">Skills ② 其他常用</span>
+      <h2>其他推荐 &amp; <span class="a">Office 替代方案</span></h2>
+      <div class="g2 mt08">
+        <div>
+          <p class="ls" style="color:#7c85fa;margin-bottom:0.15em;">实用技能</p>
+          <div class="card ca" style="padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#7c85fa;margin-bottom:0.08em;">clawflow</p>
+            <p class="m" style="font-size:0.72em;">长链任务编排 · 子任务拆分 · 跨 session 状态传递 &nbsp;·&nbsp; 适合：多步骤复杂工作流</p>
+          </div>
+          <div class="card" style="border-left-color:#5aa0f5;padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#5aa0f5;margin-bottom:0.08em;">summarize</p>
+            <p class="m" style="font-size:0.72em;">URL / 文件 / 视频 → 生成摘要 &nbsp;·&nbsp; 快速读长文、提取播客关键信息</p>
+          </div>
+          <div class="card" style="border-left-color:#3fc99e;padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#3fc99e;margin-bottom:0.08em;">video-frames</p>
+            <p class="m" style="font-size:0.72em;">从视频按时间戳截帧 &nbsp;·&nbsp; 产品 Demo 截帧、视频内容分析</p>
+          </div>
+          <div class="card" style="border-left-color:#f08c4a;padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#f08c4a;margin-bottom:0.08em;">nano-pdf</p>
+            <p class="m" style="font-size:0.72em;">PDF 解析 · 提取文字 · 自然语言指令修改 &nbsp;·&nbsp; 合同/文档批量处理</p>
+          </div>
+          <div class="card" style="border-left-color:#a5b4fc;padding:0.35em 0.7em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#a5b4fc;margin-bottom:0.08em;">1password</p>
+            <p class="m" style="font-size:0.72em;">安全读取/注入密钥 &nbsp;·&nbsp; 自动化脚本里安全使用 API Key，不落地</p>
+          </div>
+        </div>
+        <div>
+          <p class="ls" style="color:#f08c4a;margin-bottom:0.15em;">⚠ Office 三件套替代</p>
+          <div class="card cw" style="padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#f08c4a;margin-bottom:0.1em;">❌ 没有内置 Office Skills</p>
+            <p class="m" style="font-size:0.72em;">Claude 官方没有发布 Word/Excel/PPT Skills，微软也没有</p>
+          </div>
+          <div class="card ca" style="padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#7c85fa;margin-bottom:0.1em;">✅ ms365 MCP（微软官方）</p>
+            <p class="m" style="font-size:0.72em;margin-bottom:0.08em;">AI 直接操作 Office：</p>
+            <p class="m" style="font-size:0.7em;">Word 读写 · Excel 公式 · PowerPoint 幻灯片 · Outlook 邮件/日历</p>
+          </div>
+          <div class="card" style="border-left-color:#5aa0f5;padding:0.35em 0.7em;margin-bottom:0.25em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#5aa0f5;margin-bottom:0.1em;">✅ gog（Google Workspace）</p>
+            <p class="m" style="font-size:0.72em;">Docs（对标 Word）· Sheets（对标 Excel）· Slides（对标 PPT）· Drive</p>
+          </div>
+          <div class="card" style="border-left-color:#3fc99e;padding:0.35em 0.7em;">
+            <p class="h" style="font-weight:700;font-size:0.82em;color:#3fc99e;margin-bottom:0.1em;">✅ 脚本直接生成 Office 文件</p>
+            <p class="m" style="font-size:0.72em;">Python（python-docx / openpyxl）生成 .docx / .xlsx，Claude Code 直接写脚本</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ══ 19 OpenClaw 生态 ══ -->
+  <div class="slide" id="s19">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#f08c4a);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bp">生态</span>
+      <h2>Claude Code <span style="color:#5a6578;font-weight:300;">vs</span> OpenClaw — <span class="a">各有所长</span></h2>
+      <div class="cols mt08">
+        <div class="card ca" style="padding:0.7em 1em;">
+          <p style="font-size:1.2em;font-weight:900;color:#7c85fa;margin-bottom:0.2em;">Claude Code</p>
+          <p class="h" style="font-weight:600;font-size:0.88em;margin-bottom:0.3em;">官方 CLI · 本地开发</p>
+          <ul style="margin:0 0 0.3em;padding-left:1em;">
+            <li class="m" style="font-size:0.82em;">深度代码理解（Code Interpreter）</li>
+            <li class="m" style="font-size:0.82em;">bypass 权限跳过所有确认</li>
+            <li class="m" style="font-size:0.82em;">MCP 工具调用能力强</li>
+            <li class="m" style="font-size:0.82em;">最适合编程开发</li>
+          </ul>
+          <p class="m" style="font-size:0.78em;margin-top:0.3em;">选它：写代码、调试、重构、Code Review</p>
+        </div>
+        <div class="card" style="border-left-color:#a5b4fc;padding:0.7em 1em;">
+          <p style="font-size:1.2em;font-weight:900;color:#a5b4fc;margin-bottom:0.2em;">OpenClaw</p>
+          <p class="h" style="font-weight:600;font-size:0.88em;margin-bottom:0.3em;">第三方 Agent · 全场景</p>
+          <ul style="margin:0 0 0.3em;padding-left:1em;">
+            <li class="m" style="font-size:0.82em;">微信/飞书/Telegram 接入</li>
+            <li class="m" style="font-size:0.82em;">定时任务 + 心跳监控</li>
+            <li class="m" style="font-size:0.82em;">网页搜索 + 内容摘要</li>
+            <li class="m" style="font-size:0.82em;">多渠道消息推送</li>
+          </ul>
+          <p class="m" style="font-size:0.78em;margin-top:0.3em;">选它：日常助理、消息推送、定时任务、社交</p>
+        </div>
+      </div>
+      <div class="card cg mt08" style="text-align:center;padding:0.5em 1em;">
+        <p class="m" style="font-size:0.88em;">✅ 两者互补共存，OpenClaw 负责日常流程和消息通道，Claude Code 专注代码开发</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 20 金句 ══ -->
+  <div class="slide" id="s20">
+    <div class="topbar" style="background:linear-gradient(90deg,#f08c4a,#fcd34d);"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 55%,rgba(240,140,74,0.07) 0%,transparent 55%);"></div>
+    <div class="cen-l" style="position:relative;z-index:2;text-align:center;">
+      <p class="qt" style="margin-bottom:1.2em;">大多数人用 AI 问问题<br>少数人用 AI <em>完成工作</em></p>
+      <div class="hr" style="width:50px;margin:0.6em auto;"></div>
+    </div>
+  </div>
+
+  <!-- ══ 21 练习建议 ══ -->
+  <div class="slide" id="s21">
+    <div class="topbar" style="background:linear-gradient(90deg,#3fc99e,#7c85fa);"></div>
+    <div style="position:relative;z-index:2;">
+      <span class="badge bg">Exercises</span>
+      <h2>课后练习建议</h2>
+      <div class="g2 mt08">
+        <div>
+          <div class="step">
+            <div class="sn">①</div>
+            <div class="sb"><p class="t">安装并跑通 Claude Code</p><p>今天就装好，跑通第一个命令</p></div>
+          </div>
+          <div class="step">
+            <div class="sn">②</div>
+            <div class="sb"><p class="t">用 AI 读一个开源项目</p><p>找一个感兴趣的 GitHub 项目，让 AI 帮你解读架构</p></div>
+          </div>
+          <div class="step">
+            <div class="sn">③</div>
+            <div class="sb"><p class="t">用 mdold MCP 查一条任务</p><p>连接明道云 MCP，查出你名下的任务列表</p></div>
+          </div>
+          <div class="step">
+            <div class="sn snw">④</div>
+            <div class="sb"><p class="t">尝试一次 bypass</p><p>用 <code>bypass permission on</code> 跳过确认，执行一条无害命令</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="step">
+            <div class="sn snw">⑤</div>
+            <div class="sb"><p class="t">自建一个 Skill</p><p>参考示例，写一个自己的 SKILL.md</p></div>
+          </div>
+          <div class="step">
+            <div class="sn snw">⑥</div>
+            <div class="sb"><p class="t">用 AI 写 commit 信息</p><p>在项目里跑 <code>git diff</code>，让 AI 帮你写中文 commit</p></div>
+          </div>
+          <div class="step">
+            <div class="sn snw">⑦</div>
+            <div class="sb"><p class="t">用 Sub Session 并行读多文件</p><p>启动 sessions_spawn，同时读 config.json + README.md</p></div>
+          </div>
+          <div class="step">
+            <div class="sn snw">⑧</div>
+            <div class="sb"><p class="t">安装一个 Skills</p><p>从 clawhub.ai 找一个感兴趣的 Skill 安装试用</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 22 结尾 ══ -->
+  <div class="slide" id="s22">
+    <div class="topbar" style="background:linear-gradient(90deg,#7c85fa,#5aa0f5 40%,#f08c4a);"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 30% 60%,rgba(124,133,250,0.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 30%,rgba(240,140,74,0.05) 0%,transparent 45%);"></div>
+    <div class="cen-l" style="position:relative;z-index:2;text-align:center;">
+      <h1 style="font-size:2.7em;line-height:1.1;margin-bottom:0.4em;">掌握工具<br><span class="a">而不是</span><br>被工具掌握</h1>
+      <p style="font-size:1em;font-weight:300;color:#5a6578;margin:0.5em 0 1em;">接下来，让我们开始实战</p>
+      <span class="badge bp">内部培训 · Andy Lei · 2026</span>
+      <p style="color:#5a6578;font-size:0.82em;margin-top:1em;">培训材料路径：<br><code>/Users/andy/Documents/articles/Claude Code使用培训/</code></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Controls ── -->
+<div id="pgnum"><span id="cur">1</span> / 22</div>
+<button id="prev" onclick="go(-1)">←</button>
+<button id="next" onclick="go(1)">→</button>
+
+<script>
+var cur = 1, total = 22;
+function go(n) {
+  var s = document.getElementById('s'+cur);
+  cur = (cur - 1 + n + total) % total + 1;
+  var ns = document.getElementById('s'+cur);
+  if (s) s.classList.remove('active');
+  if (ns) ns.classList.add('active');
+  document.getElementById('cur').textContent = cur;
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+});
+</script>
+</body>
+</html>

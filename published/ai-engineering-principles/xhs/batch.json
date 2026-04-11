@@ -1,0 +1,50 @@
+{
+  "jobs": 5,
+  "tasks": [
+    {
+      "id": "xhs-cover",
+      "promptFiles": ["prompts/01-cover.md"],
+      "image": "01-cover.png",
+      "provider": "jimeng",
+      "model": "jimeng_t2i_v40",
+      "ar": "3:4",
+      "quality": "2k"
+    },
+    {
+      "id": "xhs-pain",
+      "promptFiles": ["prompts/02-pain.md"],
+      "image": "02-pain.png",
+      "provider": "jimeng",
+      "model": "jimeng_t2i_v40",
+      "ar": "3:4",
+      "quality": "2k"
+    },
+    {
+      "id": "xhs-tier1",
+      "promptFiles": ["prompts/03-tier1.md"],
+      "image": "03-tier1.png",
+      "provider": "jimeng",
+      "model": "jimeng_t2i_v40",
+      "ar": "3:4",
+      "quality": "2k"
+    },
+    {
+      "id": "xhs-tier2",
+      "promptFiles": ["prompts/04-tier2.md"],
+      "image": "04-tier2.png",
+      "provider": "jimeng",
+      "model": "jimeng_t2i_v40",
+      "ar": "3:4",
+      "quality": "2k"
+    },
+    {
+      "id": "xhs-ending",
+      "promptFiles": ["prompts/05-ending.md"],
+      "image": "05-ending.png",
+      "provider": "jimeng",
+      "model": "jimeng_t2i_v40",
+      "ar": "3:4",
+      "quality": "2k"
+    }
+  ]
+}
