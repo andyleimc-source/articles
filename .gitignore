@@ -1,19 +1,8 @@
-promotion.md
-ingnor/
-**/image/Windows-XP.jpeg
-**/image/author_avatar.jpeg
-**/image/copilot-side-pane-web.svg
-**/image/image_describe.md
-
 # 只同步 publish/，其他目录全部忽略
-edit/
+editing/
 asset/
-6-file-doc-system/
-icloud-claude-sync/
-stable-claude-access/
-BUG.md
+trash/
 CLAUDE.md
-DECISIONS.md
-LESSONS.md
-PLAN.md
 WRITING.md
+scripts/
+.claude/
