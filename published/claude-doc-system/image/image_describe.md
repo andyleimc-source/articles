@@ -15,12 +15,12 @@
 - **作用**：把古代皮册意象平滑过渡到现代场景——"笔记本电脑睡了，笔记本没睡"
 - **论点关联**：呼应"你关掉终端的那一刻，Claude 就入睡了"
 
-## image/claude-md-layers@2x.png（第三节 业内实践）
+## image/claude-md-layers.png（第三节 业内实践）
 三层布局结构图：全局 ~/.claude/CLAUDE.md → 项目根 /project/CLAUDE.md → 子目录 CLAUDE.md（懒加载）。
 - **作用**：把 walk-up 机制和懒加载可视化
 - **论点关联**：帮助读者看懂"为什么 Claude Code 的多层设计很漂亮"
 
-## image/six-files@2x.png（第四节 六文件方案）
+## image/six-files.png（第四节 六文件方案）
 六文件协作地图：Claude 居中，六个文件环绕，每个文件标注名字、职责、更新时机。
 - **作用**：整套轻量方案的一张脑图
 - **论点关联**：读者扫一眼就能记住体系全貌，代替大段文字
