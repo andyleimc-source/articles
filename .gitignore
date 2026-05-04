@@ -7,8 +7,12 @@ WRITING.md
 scripts/
 .claude/
 promotion.md
+xhs.md
 plan.md
 progress.md
 decision.md
 bug.md
 handoff.md
+.baoyu-skills/
+.env
+.DS_Store
