@@ -130,6 +130,9 @@ Decagon（agent 客服头部公司）——独创 APM（Agent Product Manager）
 
 > 翻译是个占位战。这个词在中文 AI 圈被叫错叫滥之前，我希望「前出工程师」能成为懂行人的暗号。
 
+![Forward Deployed Engineer 中文译名诊断](image/06-translation-grid.jpg)
+*5 个错译 + 1 个推荐译名。下次再听到「前沿 / 前线 / 前置」，知道哪儿不对了。*
+
 ---
 
 ## 三、这股浪潮是怎么形成的
@@ -163,11 +166,17 @@ Decagon（agent 客服头部公司）——独创 APM（Agent Product Manager）
 
 回头看这条曲线很清楚：Palantir 十年前看似怪异的高成本打法，在 AI agent 时代被证明是唯一可规模化的落地路径。这是产品公司组织重构，不只是岗位变化。
 
+![FDE 浪潮的 5 个关键节点](image/07-timeline.jpg)
+*2008 Palantir 起源 → 2020 AI PoC 撞墙 → 2024 五家集体开岗 → 2025 Levie 推上 X 头条 → 2026 OpenAI DeployCo 顶点事件。*
+
 ---
 
 ## 四、乙方该怎么做：SaaS / AI 公司老板的落地清单
 
 如果你是一家 SaaS 或 AI 产品公司的创始人、CEO、CTO、VP Engineering——这一节是写给你的。
+
+![乙方决策树](image/08-decision-tree.jpg)
+*三档客单价 → 三种行动决策。中间这档（¥50-500 万 + Agent 类）是当前中国 SaaS 圈最痛的地方，必须设，而且要直接挂 CTO。*
 
 ### 4.1 你的公司该不该设前出工程师？
 
@@ -263,6 +272,9 @@ Aaron Levie 那条 JD 长推（https://x.com/levie/status/2043883641366032638）
 ## 六、想干这行的个人：四类身份的最短转型路径
 
 如果你是程序员、产品经理、售前实施，或者刚毕业想入行——这一节是写给你的。
+
+![四类身份转 FDE 的最短路径](image/09-career-paths.jpg)
+*学生 / 研发 / 售前 / PM 四条路径长短不一。研发最短，售前最长，PM 在中国还有一条「企业内部 Agent Owner」分支。*
 
 前出工程师是个稀缺岗位（Anthropic 起薪 $200K base 折人民币约 140 万、Palantir 中位 $215K、顶部 $415K+，levels.fyi 数据），但门槛不在传统的"算法面试"或"系统设计"上，而在一组比较特殊的能力组合。
 

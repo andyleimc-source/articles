@@ -11,10 +11,10 @@ A Notion-style editorial flat illustration showing a **horizontal hand-drawn tim
 
 The 5 milestones, left-to-right:
 
-1. **2008 · Palantir** — small icon: a stylized headquarters building (rounded rectangle with windows). Subtitle below the timeline: 「Echo-Delta 双人组诞生」
+1. **2008 · Palantir** — small icon: a stylized headquarters building (rounded rectangle with windows). Subtitle below the timeline: 「双人组打法诞生」(Chinese only — do NOT include any English text in this subtitle)
 2. **2020 · PoC 撞墙** — small icon: a wobbly warning sign / dead-end traffic sign. Subtitle: 「AI PoC 转生产 < 30%」
-3. **2024 · 五家集体开岗** — small icon: 5 tiny stylized people silhouettes in a cluster. Subtitle: 「Anthropic / Cursor / Glean / Decagon / Sierra」
-4. **2025 · Levie 推文** — small icon: a small chat / tweet bubble with "..." inside. Subtitle: 「forward deployed engineer isn't going away」
+3. **2024 · 五家集体开岗** — small icon: 5 tiny stylized people silhouettes in a cluster. Subtitle: 「5 家头部 AI 公司同时开 FDE 岗」(Chinese only — do NOT list any English company names in this subtitle)
+4. **2025 · Levie 推文** — small icon: a small chat / tweet bubble with "..." inside. Subtitle: 「Levie 长推断言 FDE 不会消失」(Chinese only — do NOT include any English text in this subtitle)
 5. **2026 · OpenAI DeployCo** — small icon: a hand-drawn dollar sign with sparkle or a thick golden coin shape. Subtitle: 「$40 亿 · 150 FDE」
 
 The 5 milestone year labels (2008 / 2020 / 2024 / 2025 / 2026) sit ABOVE each node in bold ink-black sans-serif.
@@ -49,6 +49,19 @@ ONLY:
 ## Text Constraints
 
 CRITICAL: Chinese glyphs must render correctly — no garbled CJK. All Chinese in clean sans-serif. Year numerals in clean modern numerals. No code, no extra labels beyond what's specified.
+
+EXACT ENGLISH SPELLINGS (double-check every letter):
+- "Palantir" (P-a-l-a-n-t-i-r, 8 letters)
+- "Anthropic" (A-n-t-h-r-o-p-i-c, 9 letters, NOT "Anthrpic")
+- "Cursor"
+- "Glean" (G-l-e-a-n, 5 letters, NOT "Glmer" or "Glener")
+- "Decagon"
+- "Sierra"
+- "OpenAI" (O-p-e-n-A-I, last two letters CAPITAL "AI", NOT "OpenAi" or "Openai")
+- "DeployCo" (D-e-p-l-o-y-C-o, capital C in middle)
+- "forward deployed engineer" (lowercase, three words)
+
+These English names MUST be spelled exactly as listed. They are real company names — typos will look like AI mistakes and destroy credibility.
 
 ## Mood
 

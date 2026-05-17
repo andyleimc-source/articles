@@ -58,6 +58,15 @@ ONLY:
 
 CRITICAL: Chinese glyphs must render correctly — no garbled CJK. Clean sans-serif throughout. No additional text beyond the labels specified.
 
+EXACT ENGLISH SPELLINGS (double-check every letter):
+- "Agent" (A-g-e-n-t, 5 letters, NOT "Agnet")
+- "CTO" (all uppercase, 3 letters)
+- "CS" (all uppercase, 2 letters)
+- "SaaS" (lowercase "aa" between two uppercase S)
+- "Saas" / "SAAS" / "saas" are all WRONG — must be exactly "SaaS"
+
+These English abbreviations MUST be spelled exactly as listed.
+
 ## Mood
 
 Clear, advisory, decisive. Reads like a consultant's whiteboard sketch. Center branch should visually pop as "this is the one most readers fall into".
