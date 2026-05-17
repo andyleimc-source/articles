@@ -13,15 +13,15 @@ Layout: cream paper background (#FAF7F0).
 
 The 4 starting figures, arranged on the left side at varying heights (top-left, mid-upper-left, mid-lower-left, bottom-left):
 
-1. **Top-left** — a student silhouette with a backpack and a small graduation cap. Label below: 「在校生 / 应届」(ink-black). The path from this figure to the FDE badge is a **medium-length wobbly line** (phosphor-green #1AB87C dashed). A small floating annotation along the path: 「直接申 Founding 团队」(graphite, tiny).
+1. **Top-left** — a student silhouette with a backpack and a small graduation cap. Label below: 「在校生」(ink-black). The path from this figure to the FDE badge is a **medium-length wobbly line** (phosphor-green #1AB87C dashed). A small floating annotation along the path: 「邮件挖创业团队」(graphite, tiny).
 
-2. **Upper-left** — a developer silhouette holding a laptop. Label: 「3-5 年研发」(ink-black). Path is the **SHORTEST**, drawn in a thicker solid phosphor-green line — implying highest ROI route. Annotation: 「最短路径」(phosphor-green, small bold).
+2. **Upper-left** — a developer silhouette holding a laptop. Label: 「资深研发」(ink-black). Path is the **SHORTEST**, drawn in a thicker solid phosphor-green line — implying highest ROI route. Annotation: 「最短路径」(phosphor-green, small bold).
 
-3. **Lower-left** — a sales/presales silhouette holding a clipboard or briefcase. Label: 「售前 / 实施顾问」(ink-black). Path is the **LONGEST** and curvier, drawn in fog-blue #9CB4CC. Annotation: 「最现实，最难」(graphite, tiny).
+3. **Lower-left** — a sales/presales silhouette holding a clipboard or briefcase. Label: 「售前实施」(ink-black). Path is the **LONGEST** and curvier, drawn in fog-blue #9CB4CC. Annotation: 「最现实最难」(graphite, tiny).
 
-4. **Bottom-left** — a product manager silhouette pointing at a sticky-note board. Label: 「PM / 业务运营」(ink-black). Path is medium-length, drawn in brick-gray #6E6259, but the path SPLITS into TWO destinations: one short branch goes to a smaller separate badge labeled 「企业内部 Agent Owner」(phosphor-green, secondary), and one long branch continues to the main FDE badge. Annotation: 「国内甲方机会更大」(graphite, tiny).
+4. **Bottom-left** — a product manager silhouette pointing at a sticky-note board. Label: 「产品业务」(ink-black). Path is medium-length, drawn in brick-gray #6E6259, but the path SPLITS into TWO destinations: one short branch goes to a smaller separate badge labeled 「企业落地负责人」(phosphor-green, secondary), and one long branch continues to the main FDE badge. Annotation: 「甲方机会更大」(graphite, tiny).
 
-Center-right: a hand-drawn rounded badge labeled 「**前出工程师 · FDE**」 in ink-black sans-serif with a phosphor-green highlight outline. Small star or sparkle decoration above the badge.
+Center-right: a hand-drawn rounded badge labeled 「前出工程师」 in ink-black sans-serif with a phosphor-green highlight outline. Small star or sparkle decoration above the badge.
 
 Top-left small section label: 「想干这行？四类身份的最短路径」(graphite #3A4151).
 
@@ -51,7 +51,17 @@ ONLY:
 
 ## Text Constraints
 
-CRITICAL: Chinese glyphs must render correctly — no garbled CJK. All Chinese in clean sans-serif. No additional text beyond the labels and annotations specified.
+CRITICAL: Chinese glyphs must render correctly — no garbled CJK, proper strokes, proper kerning, no fake-looking radicals. All Chinese in clean sans-serif (similar to PingFang SC). No additional text beyond the labels and annotations specified.
+
+EXACT CHINESE PHRASES (double-check every character — no English, no Latin words in body):
+- Figure labels: 「在校生」「资深研发」「售前实施」「产品业务」
+- Annotations: 「邮件挖创业团队」「最短路径」「最现实最难」「甲方机会更大」
+- Center main badge: 「前出工程师」
+- Secondary badge: 「企业落地负责人」
+- Top section label: 「想干这行？四类身份的最短路径」
+- Watermark: 「雷码工坊笔记」
+
+NO English words in this image except possibly "FDE" if it appears naturally — but prefer all-Chinese rendering.
 
 ## Mood
 
