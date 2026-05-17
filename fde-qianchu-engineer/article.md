@@ -150,7 +150,7 @@ Decagon（agent 客服头部公司）——独创 APM（Agent Product Manager）
 
 （https://x.com/levie/status/2043883641366032638）
 
-另一条更狠的（https://x.com/levie/status/2044225408972009842）：
+另一条（https://x.com/levie/status/2044225408972009842）：
 
 > One corollary to the fact that AI agents take real work to setup in company at scale, is that the role of the forward deployed engineer—or whatever it gets called in the future—isn't going away any time soon.
 >
