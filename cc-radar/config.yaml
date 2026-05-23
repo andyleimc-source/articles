@@ -1,0 +1,47 @@
+# cc-radar 配置
+# 数据源：xradar 本地 raw 目录
+xradar_raw_dir: /Users/andy/Documents/running/xradar/data/raw
+xradar_env_file: /Users/andy/Documents/running/xradar/.env  # 复用 DEEPSEEK_API_KEY
+
+# 账号白名单（不含 @）。只看这些账号的推文，其他全弃。
+accounts:
+  - AnthropicAI
+  - claudeai
+  - alexalbert__
+  - _catwu
+  - cline
+  - simonw
+  - swyx
+  - DynamicWebPaige
+  - skirano
+  - mckaywrigley
+
+# 关键词命中（大小写无关，任一命中入候选池）
+keywords:
+  - "claude code"
+  - "claude-code"
+  - MCP
+  - subagent
+  - "sub-agent"
+  - skill
+  - hook
+  - "slash command"
+  - "/agents"
+  - headless
+  - "claude-agent-sdk"
+  - "agent sdk"
+  - "opus 4"
+  - "sonnet 4"
+  - "haiku 4"
+  - plan mode
+  - "/plan"
+  - artifact
+
+# 评分阈值（DeepSeek 打 0-100，>=该分数入选）
+score_threshold: 70
+
+# 当天最多产出几个候选
+max_candidates_per_day: 5
+
+# DeepSeek 模型
+deepseek_model: deepseek-v4-flash

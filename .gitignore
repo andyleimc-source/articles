@@ -5,6 +5,7 @@ trash/
 CLAUDE.md
 WRITING.md
 scripts/
+!cc-radar/scripts/
 .claude/
 promotion.md
 xhs.md
@@ -16,3 +17,6 @@ handoff.md
 .baoyu-skills/
 .env
 .DS_Store
+_starter-kit/
+# cc-radar：脚本和 prompt 入库，运行时数据本地化
+cc-radar/data/
