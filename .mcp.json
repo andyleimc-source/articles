@@ -1,8 +1,7 @@
 {
   "mcpServers": {
-    "xiaohongshu": {
-      "type": "http",
-      "url": "http://localhost:18060/mcp"
+    "agy": {
+      "command": "/Users/andy/Library/Python/3.12/bin/agymcp"
     }
   }
 }
