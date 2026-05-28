@@ -3,7 +3,7 @@
     "agy": {
       "command": "/Users/andy/Library/Python/3.12/bin/agy-mcp",
       "env": {
-        "AGY_BIN": "/Users/andy/.antigravity/antigravity/bin/agy"
+        "AGY_BIN": "/Users/andy/Library/Python/3.12/bin/agy-cli"
       }
     }
   }
