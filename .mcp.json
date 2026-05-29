@@ -3,7 +3,7 @@
     "agy": {
       "command": "/Users/andy/Library/Python/3.12/bin/agy-mcp",
       "env": {
-        "AGY_BIN": "/Users/andy/Library/Python/3.12/bin/agy-cli"
+        "AGY_BIN": "/Users/andy/.local/bin/agy"
       }
     }
   }
