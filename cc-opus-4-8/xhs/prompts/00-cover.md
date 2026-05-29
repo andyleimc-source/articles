@@ -1,18 +1,14 @@
-# 00-cover 封面
+竖版 3:4 小红书封面卡，Notion 风格 flat illustration，背景米白 #FAF7F0，轻微纸张颗粒纹理，手绘感不规整描边，大量留白，editorial 风格。
 
-## 视觉
-Notion 风格 flat illustration。画面中央一个**巨大的抽象数字「4.8」**，墨黑 #0E1116 描边，手绘不规整线条，数字内部填充米白 #FAF7F0 透气留白。「4.8」的小数点改成一个**磷绿 #1AB87C 实心圆点**，发出柔和光晕作为视觉信号。
-数字左上方漂浮几个小元素：一行代码 `claude` 终端提示符、一个对话气泡、一个齿轮——都是石墨色 #3A4151 极简线稿，作为环境暗示。
-背景米白 #FAF7F0，轻微纸张颗粒纹理。
-
-## 文案（共 18 字）
-顶部小标签（石墨色，小字号）：CLAUDE CODE
+顶部：石墨色 #3A4151 小标签「CLAUDE CODE」。
+画面中央：一个巨大的手绘数字「4.8」，墨黑 #0E1116 粗描边，数字内部透气留白，小数点改成磷绿 #1AB87C 实心圆点并带柔和光晕。
+「4.8」周围漂浮几个小元素：一行终端提示符「claude」、一个对话气泡、一个齿轮——石墨色 #3A4151 极简线稿。
 主标题（数字下方，墨黑加粗，单行）：八个变化值得知道
-（不要把"Opus 4.8"几个字符画出来，让那个巨大的 4.8 数字本身承担）
 
-## 输出参数
-- 1:1 square, 2k quality
-- 右下角水印「雷码工坊笔记」（石墨 #3A4151、~65% 不透明、小字、无边框无图标）
-- Chinese glyphs must render correctly, no garbled characters, no fake-looking CJK, kerning correct
-- 风格关键词：Notion flat illustration, hand-drawn imperfect outlines, warm pastel, editorial, lots of white space, friendly
-- 严禁：摄影写实、3D 渲染、cyber 霓虹、紫色渐变、暖橙色、纯黑文本、深色背景
+底部：一个米白圆角说明卡，磷绿 #1AB87C 细描边，卡内三行墨黑短句：
+第一行：Anthropic 最强模型全面升级
+第二行：代码、速度、诚实、Agent 四项突破
+第三行：这 9 张图带你看清每个变化
+
+右下角水印「雷码工坊笔记」石墨 #3A4151、约 65% 不透明、小字。
+Chinese glyphs must render correctly, no garbled characters, kerning correct. 严禁：摄影写实、3D、cyber、紫色、暖橙、深色背景。
