@@ -31,6 +31,14 @@
 - **不要用 default 主题**——default 主题会把 H2 染成绿色块，违反"标题色 ≠ 加粗色"
 - 不要用旧的 `--color blue`
 
+### 公众号 H2 大标题（荧光笔 A 档 · 2026-06-04 定稿）
+- baoyu 默认主题的 H2 是**磷绿填充块**（`display:table; color:#fff; background:#1AB87C`）——**已废弃，太丑且违反「标题色≠加粗色」**
+- 定稿样式：**标题墨黑 `#0E1116` 左对齐无底色 + 文字下半段压一层半透明磷绿荧光带**
+  - 荧光带：`linear-gradient(transparent 58%, rgba(26,184,124,.28) 0)`，只盖文字 58% 以下，文字仍清晰
+  - 荧光带必须包在文字外层 inline `<span>`（贴着字）；加在 h2 块上会变成整行通栏底色（错）
+- **落地方式**：baoyu 生成 `article.html` 后跑 `python3 scripts/wechat-style-h2.py <dir>/article.html`，自动把所有 H2 改写成此样式（原文件备份、幂等）。CLI 不支持注入自定义 H2 CSS，所以走后处理。
+- 调色带高低/浓淡：改脚本顶部 `BAND_START` / `BAND_OPACITY` 两个常量
+
 ### 配图
 - baoyu-imagine / baoyu-cover-image 的 prompt 必须用品牌色板
 - 主体强调元素优先用 **磷绿 #1AB87C**
