@@ -1,0 +1,105 @@
+{
+  "jobs": 4,
+  "tasks": [
+    {
+      "id": "01-cli",
+      "promptFiles": ["prompts/01-cli.md", "_style.md"],
+      "image": "01-cli.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    },
+    {
+      "id": "02-desktop",
+      "promptFiles": ["prompts/02-desktop.md", "_style.md"],
+      "image": "02-desktop.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    },
+    {
+      "id": "03-web",
+      "promptFiles": ["prompts/03-web.md", "_style.md"],
+      "image": "03-web.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    },
+    {
+      "id": "04-ide",
+      "promptFiles": ["prompts/04-ide.md", "_style.md"],
+      "image": "04-ide.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    },
+    {
+      "id": "05-sdk",
+      "promptFiles": ["prompts/05-sdk.md", "_style.md"],
+      "image": "05-sdk.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    },
+    {
+      "id": "06-pricing",
+      "promptFiles": ["prompts/06-pricing.md", "_style.md"],
+      "image": "06-pricing.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    },
+    {
+      "id": "07-interop",
+      "promptFiles": ["prompts/07-interop.md", "_style.md"],
+      "image": "07-interop.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    },
+    {
+      "id": "08-decision",
+      "promptFiles": ["prompts/08-decision.md", "_style.md"],
+      "image": "08-decision.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    },
+    {
+      "id": "09-pitfalls",
+      "promptFiles": ["prompts/09-pitfalls.md", "_style.md"],
+      "image": "09-pitfalls.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    },
+    {
+      "id": "10-mysetup",
+      "promptFiles": ["prompts/10-mysetup.md", "_style.md"],
+      "image": "10-mysetup.png",
+      "ref": ["00-cover.png"],
+      "provider": "openai",
+      "model": "gpt-image-2",
+      "size": "1024x1536",
+      "quality": "2k"
+    }
+  ]
+}

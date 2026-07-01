@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>标题排版样式 4 选 1 - 前出工程师</title>
+<style>
+  body {
+    font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+    background: #FAF7F0;
+    color: #3A4151;
+    max-width: 760px;
+    margin: 40px auto;
+    padding: 0 24px;
+    line-height: 1.85;
+    font-size: 16px;
+  }
+  .style-block {
+    margin-bottom: 80px;
+    padding: 32px 28px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 14px rgba(0,0,0,.04);
+  }
+  .style-block .label {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: .15em;
+    color: #1AB87C;
+    background: rgba(26,184,124,.08);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+  .article-title {
+    color: #0E1116;
+    font-weight: 700;
+    margin: 20px 0 12px;
+    line-height: 1.35;
+  }
+  p { color: #3A4151; margin: 12px 0; }
+  hr.note { border: none; border-top: 1px dashed #9CB4CC; margin: 18px 0; }
+  .note-text { font-size: 13px; color: #6E6259; font-style: italic; }
+
+  /* ============ 样式 A: 当前 simple 主题（参照对比，标题色块大）============ */
+  .a h2 {
+    background: #1AB87C;
+    color: #fff;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 22px;
+    margin: 36px 0 20px;
+  }
+
+  /* ============ 样式 B: 左竖线极简（推荐 1）============ */
+  .b h2 {
+    border-left: 4px solid #1AB87C;
+    padding-left: 14px;
+    font-size: 22px;
+    color: #0E1116;
+    margin: 36px 0 18px;
+    line-height: 1.4;
+  }
+
+  /* ============ 样式 C: 编号 + 小磷绿色斑（推荐 2）============ */
+  .c h2 {
+    font-size: 22px;
+    color: #0E1116;
+    margin: 36px 0 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .c h2::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #1AB87C;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  /* ============ 样式 D: 下划线 + 数字标 ============ */
+  .d h2 {
+    font-size: 22px;
+    color: #0E1116;
+    margin: 40px 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0E1116;
+    position: relative;
+  }
+  .d h2 .num {
+    color: #1AB87C;
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 14px;
+    margin-right: 10px;
+    font-weight: 500;
+    letter-spacing: .05em;
+  }
+
+  /* ============ 样式 E: 纯文本 + 磷绿前缀符（极简派）============ */
+  .e h2 {
+    font-size: 22px;
+    color: #0E1116;
+    margin: 36px 0 18px;
+  }
+  .e h2 .prefix {
+    color: #1AB87C;
+    font-family: "SF Mono", Menlo, monospace;
+    margin-right: 10px;
+    font-weight: 400;
+  }
+
+  /* ============ 样式 F: 章节号上挑 + 标题下沉 ============ */
+  .f h2 {
+    font-size: 22px;
+    color: #0E1116;
+    margin: 40px 0 18px;
+    line-height: 1.4;
+  }
+  .f h2 .chapter {
+    display: block;
+    font-size: 12px;
+    color: #1AB87C;
+    letter-spacing: .25em;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  /* 加粗演示 */
+  strong { color: #0E1116; }
+  .b strong, .c strong, .d strong, .e strong, .f strong { color: #1AB87C; }
+
+  /* footer 提示 */
+  .footer { text-align: center; color: #6E6259; font-size: 13px; padding: 40px 0; }
+</style>
+</head>
+<body>
+
+<h1 style="color:#0E1116; font-size:32px; margin-bottom:8px;">标题排版样式 4 选 1</h1>
+<p style="color:#6E6259; font-size:14px;">挑一个你喜欢的，告诉我编号（B / C / D / E / F），我把它套到发布脚本里。样式 A 是当前 simple 主题的样子，作为对照。</p>
+
+<div class="style-block a">
+  <span class="label" style="color:#6E6259; background:rgba(110,98,89,.08);">A · 当前 simple 主题（对照）</span>
+  <h1 class="article-title" style="font-size:30px;">前出工程师：OpenAI 砸 40 亿抢的岗位</h1>
+  <p>2026 年 5 月，OpenAI 掏出 40 亿美元成立 DeployCo……</p>
+  <h2>一、这是什么角色：前出工程师</h2>
+  <p>先给一句话定义：<strong>前出工程师 = 产品公司派出、嵌入客户现场、自己写产品代码的全栈工程师</strong>。</p>
+  <h2>二、为什么现有中文译法全错</h2>
+  <p>这一节是这篇文章里我最想钉住的一段……</p>
+  <hr class="note">
+  <p class="note-text">问题：H2 整个染成磷绿色块，视觉重量太大，长文里 8 个章节 = 8 个磷绿大色块，喧宾夺主。</p>
+</div>
+
+<div class="style-block b">
+  <span class="label">B · 左竖线极简（推荐 1）</span>
+  <h1 class="article-title" style="font-size:30px;">前出工程师：OpenAI 砸 40 亿抢的岗位</h1>
+  <p>2026 年 5 月，OpenAI 掏出 40 亿美元成立 DeployCo……</p>
+  <h2>一、这是什么角色：前出工程师</h2>
+  <p>先给一句话定义：<strong>前出工程师 = 产品公司派出、嵌入客户现场、自己写产品代码的全栈工程师</strong>。</p>
+  <h2>二、为什么现有中文译法全错</h2>
+  <p>这一节是这篇文章里我最想钉住的一段……</p>
+  <hr class="note">
+  <p class="note-text">特点：左侧 4px 磷绿竖线点缀，标题文字保持墨黑。Notion / Linear 经典做法。最克制、最长文友好。</p>
+</div>
+
+<div class="style-block c">
+  <span class="label">C · 磷绿圆点 · 居中对齐（推荐 2）</span>
+  <h1 class="article-title" style="font-size:30px;">前出工程师：OpenAI 砸 40 亿抢的岗位</h1>
+  <p>2026 年 5 月，OpenAI 掏出 40 亿美元成立 DeployCo……</p>
+  <h2>一、这是什么角色：前出工程师</h2>
+  <p>先给一句话定义：<strong>前出工程师 = 产品公司派出、嵌入客户现场、自己写产品代码的全栈工程师</strong>。</p>
+  <h2>二、为什么现有中文译法全错</h2>
+  <p>这一节是这篇文章里我最想钉住的一段……</p>
+  <hr class="note">
+  <p class="note-text">特点：用一个磷绿小圆点替代竖线，气质更"科技博客"。</p>
+</div>
+
+<div class="style-block d">
+  <span class="label">D · 数字编号 + 墨黑下划线</span>
+  <h1 class="article-title" style="font-size:30px;">前出工程师：OpenAI 砸 40 亿抢的岗位</h1>
+  <p>2026 年 5 月，OpenAI 掏出 40 亿美元成立 DeployCo……</p>
+  <h2><span class="num">01</span>这是什么角色：前出工程师</h2>
+  <p>先给一句话定义：<strong>前出工程师 = 产品公司派出、嵌入客户现场、自己写产品代码的全栈工程师</strong>。</p>
+  <h2><span class="num">02</span>为什么现有中文译法全错</h2>
+  <p>这一节是这篇文章里我最想钉住的一段……</p>
+  <hr class="note">
+  <p class="note-text">特点：磷绿数字编号 + 墨黑下划线，编辑部杂志感。结构感最强。</p>
+</div>
+
+<div class="style-block e">
+  <span class="label">E · 极简代码前缀符（开发者气质）</span>
+  <h1 class="article-title" style="font-size:30px;">前出工程师：OpenAI 砸 40 亿抢的岗位</h1>
+  <p>2026 年 5 月，OpenAI 掏出 40 亿美元成立 DeployCo……</p>
+  <h2><span class="prefix">##</span>这是什么角色：前出工程师</h2>
+  <p>先给一句话定义：<strong>前出工程师 = 产品公司派出、嵌入客户现场、自己写产品代码的全栈工程师</strong>。</p>
+  <h2><span class="prefix">##</span>为什么现有中文译法全错</h2>
+  <p>这一节是这篇文章里我最想钉住的一段……</p>
+  <hr class="note">
+  <p class="note-text">特点：磷绿 ## markdown 前缀符，特别适合技术读者，「雷码工坊」气质浓。</p>
+</div>
+
+<div class="style-block f">
+  <span class="label">F · 章节号上挑 · 双行布局</span>
+  <h1 class="article-title" style="font-size:30px;">前出工程师：OpenAI 砸 40 亿抢的岗位</h1>
+  <p>2026 年 5 月，OpenAI 掏出 40 亿美元成立 DeployCo……</p>
+  <h2><span class="chapter">Chapter 01</span>这是什么角色：前出工程师</h2>
+  <p>先给一句话定义：<strong>前出工程师 = 产品公司派出、嵌入客户现场、自己写产品代码的全栈工程师</strong>。</p>
+  <h2><span class="chapter">Chapter 02</span>为什么现有中文译法全错</h2>
+  <p>这一节是这篇文章里我最想钉住的一段……</p>
+  <hr class="note">
+  <p class="note-text">特点：英文章节标在标题上方，长文导航感最强，杂志/书籍风。</p>
+</div>
+
+<div class="footer">挑一个，回复字母即可（如「B」或「C，但圆点改成方块」）</div>
+
+</body>
+</html>

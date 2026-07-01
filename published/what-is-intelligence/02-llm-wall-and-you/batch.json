@@ -1,0 +1,41 @@
+{
+  "jobs": 4,
+  "tasks": [
+    {
+      "id": "neurips",
+      "promptFiles": ["prompts/02-neurips-ilya.md"],
+      "image": "image/02-neurips-ilya.png",
+      "provider": "seedream",
+      "model": "doubao-seedream-5-0-260128",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "framework",
+      "promptFiles": ["prompts/03-five-step-framework.md"],
+      "image": "image/03-five-step-framework.png",
+      "provider": "seedream",
+      "model": "doubao-seedream-5-0-260128",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "alphago",
+      "promptFiles": ["prompts/04-alphago-evolution.md"],
+      "image": "image/04-alphago-evolution.png",
+      "provider": "seedream",
+      "model": "doubao-seedream-5-0-260128",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "selftest",
+      "promptFiles": ["prompts/05-five-step-self-test.md"],
+      "image": "image/05-five-step-self-test.png",
+      "provider": "seedream",
+      "model": "doubao-seedream-5-0-260128",
+      "ar": "16:9",
+      "quality": "2k"
+    }
+  ]
+}

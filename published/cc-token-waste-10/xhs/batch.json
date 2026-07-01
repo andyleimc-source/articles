@@ -1,0 +1,13 @@
+{
+  "jobs": 4,
+  "tasks": [
+    {"id": "03", "promptFiles": ["prompts/03-skill-dust.md"], "image": "03-skill.png", "provider": "openai", "model": "gpt-image-2", "ar": "3:4", "quality": "normal", "ref": ["00-cover.png"]},
+    {"id": "04", "promptFiles": ["prompts/04-claudemd-scroll.md"], "image": "04-claudemd.png", "provider": "openai", "model": "gpt-image-2", "ar": "3:4", "quality": "normal", "ref": ["00-cover.png"]},
+    {"id": "05", "promptFiles": ["prompts/05-find-file-maze.md"], "image": "05-find-file.png", "provider": "openai", "model": "gpt-image-2", "ar": "3:4", "quality": "normal", "ref": ["00-cover.png"]},
+    {"id": "06", "promptFiles": ["prompts/06-subagent-rooms.md"], "image": "06-subagent.png", "provider": "openai", "model": "gpt-image-2", "ar": "3:4", "quality": "normal", "ref": ["00-cover.png"]},
+    {"id": "07", "promptFiles": ["prompts/07-cat-book.md"], "image": "07-cat.png", "provider": "openai", "model": "gpt-image-2", "ar": "3:4", "quality": "normal", "ref": ["00-cover.png"]},
+    {"id": "08", "promptFiles": ["prompts/08-rollback-blocks.md"], "image": "08-rollback.png", "provider": "openai", "model": "gpt-image-2", "ar": "3:4", "quality": "normal", "ref": ["00-cover.png"]},
+    {"id": "09", "promptFiles": ["prompts/09-plan-map.md"], "image": "09-plan.png", "provider": "openai", "model": "gpt-image-2", "ar": "3:4", "quality": "normal", "ref": ["00-cover.png"]},
+    {"id": "10", "promptFiles": ["prompts/10-repeat-copier.md"], "image": "10-repeat.png", "provider": "openai", "model": "gpt-image-2", "ar": "3:4", "quality": "normal", "ref": ["00-cover.png"]}
+  ]
+}

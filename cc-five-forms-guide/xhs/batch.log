@@ -1,0 +1,39 @@
+Batch mode: 10 tasks, 4 workers, parallel mode enabled.
+- replicate: concurrency=5, startIntervalMs=700
+- google: concurrency=3, startIntervalMs=1100
+- openai: concurrency=3, startIntervalMs=1100
+- openrouter: concurrency=3, startIntervalMs=1100
+- dashscope: concurrency=3, startIntervalMs=1100
+- zai: concurrency=3, startIntervalMs=1100
+- minimax: concurrency=3, startIntervalMs=1100
+- jimeng: concurrency=3, startIntervalMs=1100
+- seedream: concurrency=3, startIntervalMs=1100
+- azure: concurrency=3, startIntervalMs=1100
+Using openai / gpt-image-2 for 01-cli
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+Using openai / gpt-image-2 for 02-desktop
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+Using openai / gpt-image-2 for 03-web
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+Using openai / gpt-image-2 for 05-sdk
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+Using openai / gpt-image-2 for 06-pricing
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+Using openai / gpt-image-2 for 07-interop
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+Using openai / gpt-image-2 for 08-decision
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+[08-decision] Attempt 1/3 failed, retrying...
+[07-interop] Attempt 1/3 failed, retrying...
+[06-pricing] Attempt 1/3 failed, retrying...
+Using openai / gpt-image-2 for 09-pitfalls
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+Using openai / gpt-image-2 for 10-mysetup
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+Using openai / gpt-image-2 for 04-ide
+Switch model: --model <id> | EXTEND.md default_model.openai | env OPENAI_IMAGE_MODEL
+
+Batch generation summary:
+- Total: 10
+- Succeeded: 10
+- Failed: 0

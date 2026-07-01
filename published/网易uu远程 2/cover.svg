@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <pattern id="dots" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#c9d4e0" opacity="0.55"/>
+    </pattern>
+    <linearGradient id="screenGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7ee4ff"/>
+      <stop offset="100%" stop-color="#22b8e6"/>
+    </linearGradient>
+    <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22b8e6" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#22b8e6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#22b8e6" stop-opacity="0.15"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="#f5f7fb"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+
+  <!-- iPad (left, slight 3/4 angle, landscape) -->
+  <g transform="translate(110,180)">
+    <rect x="0" y="0" width="420" height="300" rx="22" ry="22" fill="#1c2c47"/>
+    <rect x="14" y="14" width="392" height="272" rx="10" ry="10" fill="url(#screenGlow)"/>
+    <!-- caret -->
+    <rect x="195" y="115" width="30" height="3" fill="#0f3a52" opacity="0.55"/>
+    <!-- dock row -->
+    <g transform="translate(80,235)">
+      <rect x="0"   y="0" width="34" height="34" rx="8" fill="#0f3a52" opacity="0.45"/>
+      <rect x="46"  y="0" width="34" height="34" rx="8" fill="#0f3a52" opacity="0.45"/>
+      <rect x="92"  y="0" width="34" height="34" rx="8" fill="#0f3a52" opacity="0.45"/>
+      <rect x="138" y="0" width="34" height="34" rx="8" fill="#0f3a52" opacity="0.45"/>
+      <rect x="184" y="0" width="34" height="34" rx="8" fill="#0f3a52" opacity="0.45"/>
+      <rect x="230" y="0" width="34" height="34" rx="8" fill="#0f3a52" opacity="0.45"/>
+    </g>
+  </g>
+
+  <!-- Closed laptop (right, side angled) -->
+  <g transform="translate(720,295)">
+    <!-- closed lid -->
+    <rect x="0" y="0" width="380" height="22" rx="6" fill="#1c2c47"/>
+    <rect x="0" y="22" width="380" height="100" fill="#1c2c47"/>
+    <!-- bottom slope (3D hint) -->
+    <polygon points="0,122 380,122 392,140 -12,140" fill="#13233f"/>
+    <!-- side port + dummy plug -->
+    <rect x="-26" y="60" width="22" height="14" rx="2" fill="#0d1b30"/>
+    <rect x="-58" y="58" width="34" height="18" rx="3" fill="#1c2c47"/>
+    <rect x="-58" y="58" width="34" height="18" rx="3" fill="none" stroke="#22b8e6" stroke-width="2" filter="url(#softGlow)"/>
+    <!-- glow ring around plug -->
+    <circle cx="-41" cy="67" r="28" fill="none" stroke="#22b8e6" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="-41" cy="67" r="40" fill="none" stroke="#22b8e6" stroke-width="1" opacity="0.25"/>
+  </g>
+
+  <!-- Connecting arc -->
+  <path d="M 320 200 Q 600 60 870 270" fill="none" stroke="url(#arcGrad)" stroke-width="6" stroke-linecap="round" filter="url(#softGlow)"/>
+  <path d="M 320 200 Q 600 60 870 270" fill="none" stroke="#7ee4ff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+
+  <!-- Title -->
+  <g transform="translate(600,560)" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif" fill="#1c2c47">
+    <text x="0" y="0" font-size="58" font-weight="700" letter-spacing="2">把 Mac 塞进 iPad</text>
+    <text x="0" y="46" font-size="22" font-weight="500" fill="#5b6a82" letter-spacing="1">关机也能 vibe coding</text>
+  </g>
+</svg>

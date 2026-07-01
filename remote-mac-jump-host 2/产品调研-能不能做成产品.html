@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品调研：手机跳板远程驱动 AI Agent，能不能做成产品？</title>
+<style>
+  :root{
+    --green:#1AB87C; --ink:#0E1116; --paper:#FAF8F3;
+    --red:#D64545; --amber:#E0922F; --line:#E5E0D6; --muted:#6B6B6B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Segoe UI",sans-serif;
+    background:var(--paper); color:var(--ink); line-height:1.75; font-size:16px;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px; margin:0 auto; padding:56px 24px 96px}
+  .kicker{color:var(--green); font-weight:700; letter-spacing:.08em; font-size:13px;
+    text-transform:uppercase; margin-bottom:14px}
+  h1{font-size:30px; line-height:1.3; margin-bottom:8px; letter-spacing:-.01em}
+  .sub{color:var(--muted); font-size:15px; margin-bottom:36px}
+  .verdict{background:var(--ink); color:#fff; border-radius:16px; padding:32px 32px 28px; margin-bottom:40px}
+  .verdict .tag{display:inline-block; background:var(--red); color:#fff; font-weight:800;
+    font-size:14px; padding:5px 14px; border-radius:999px; letter-spacing:.05em; margin-bottom:16px}
+  .verdict h2{font-size:23px; line-height:1.45; font-weight:700; margin-bottom:14px}
+  .verdict p{color:#D6D6D6; font-size:15px}
+  .verdict .em{color:var(--green); font-weight:700}
+  h3{font-size:20px; margin:44px 0 4px; letter-spacing:-.01em}
+  h3 .n{color:var(--green); font-weight:800; margin-right:10px}
+  .lead{color:var(--muted); font-size:14px; margin-bottom:16px}
+  p{margin:0 0 14px}
+  .card{background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:16px 0}
+  .card h4{font-size:16px; margin-bottom:8px}
+  .card.kill{border-left:4px solid var(--red)}
+  .card.fact{border-left:4px solid var(--green)}
+  ul{margin:6px 0 14px; padding-left:22px}
+  li{margin-bottom:8px}
+  strong{font-weight:700}
+  .hl{background:linear-gradient(transparent 62%, #1AB87C33 62%); padding:0 2px}
+  table{width:100%; border-collapse:collapse; margin:14px 0 20px; font-size:14px}
+  th,td{text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{color:var(--muted); font-weight:600; font-size:12.5px; text-transform:uppercase; letter-spacing:.04em}
+  td.r{text-align:right; white-space:nowrap}
+  .funnel td:last-child{font-weight:700; text-align:right; white-space:nowrap}
+  .pill{display:inline-block; font-size:12px; font-weight:700; padding:2px 9px; border-radius:6px}
+  .pill.red{background:#FBE3E3; color:var(--red)}
+  .pill.amber{background:#FBEFDC; color:var(--amber)}
+  .pill.green{background:#DDF3E9; color:var(--green)}
+  .form{background:#fff; border:1px solid var(--line); border-radius:12px; padding:8px 22px; margin:14px 0}
+  .form .row{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line); align-items:flex-start}
+  .form .row:last-child{border-bottom:none}
+  .form .lab{flex:0 0 110px; font-weight:700; font-size:14px}
+  .form .desc{flex:1; font-size:14px; color:#333}
+  .foot{margin-top:48px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:13px}
+  a{color:var(--green); text-decoration:none; border-bottom:1px solid #1AB87C55}
+  hr{border:none; border-top:1px solid var(--line); margin:40px 0}
+  .src{font-size:12.5px; color:var(--muted)}
+  .src a{font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">产品调研 · 2026-06-28</div>
+  <h1>手机 → 公网跳板 → 家里 Mac → 驱动 AI Agent<br>这套手搓方案，能不能做成产品？</h1>
+  <p class="sub">主市场：中国 · 唯一要回答的问题：这是不是一个值得做的好产品。源料：<a href="https://github.com/andyleimc-source/moshi-config">moshi-config 仓库</a>（教程 + 脚本）</p>
+
+  <div class="verdict">
+    <span class="tag">结论 · 不做</span>
+    <h2>作为独立付费产品 —— 不做。<br>它是一份好内容、一个好个人品牌资产，但不是一个好产品。</h2>
+    <p>你以为的「独有内核」（国内跳板绕开被墙中继），<span class="em">既有现成原生替代（自建 DERP），又刚被平台亲手掀掉地基（Anthropic 官方 Remote Control）</span>。痛点根因被误诊，中国楔子 TAM 仅几千到两三万人，且付费意愿被免费生态双重稀释。最靠谱的"形态"不是产品，是把它当内容 / 影响力资产继续做。</p>
+  </div>
+
+  <h3><span class="n">一</span>先把"这"是什么说清楚</h3>
+  <p class="lead">产品判断必须建在正确的对象上。</p>
+  <p>你这套栈里，<strong>"手机终端 App + agent 完成/审批推送"这一层已经是一个在卖的成品 —— Moshi（getmoshi.app）</strong>，你的仓库本身叫 <code>moshi-config</code>、写明"与 getmoshi.app 无隶属关系"，它是架在 Moshi 之上的<strong>配置 + 教程</strong>。语音输入、moshi-hook 推送、tmux 集成、Diff Viewer 都是 Moshi 的产品功能。</p>
+  <p>所以你真正独有的内核，比"整套栈"窄得多，只有两块：<span class="hl">① 国内跳板方案（绕开被墙 DERP）+ ② 把一堆手动坑固化成"一键打通"的打包</span>。下面四条，正是冲着这两块去验证的。</p>
+
+  <h3><span class="n">二</span>独有内核①：国内跳板，有现成原生解，没有独特价值</h3>
+  <p class="lead">前置技术核查 —— 这一条本身就能左右结论。</p>
+  <div class="card fact">
+    <h4>自建 DERP 已是国内 Tailscale 用户的事实标准</h4>
+    <p style="margin:0">国内绕开被墙官方中继，主流解法不是 SSH 跳板，而是<strong>自建 DERP 节点</strong>。社区已演化出<strong>纯 IP + 自签证书 + Docker、无需域名、无需备案</strong>的姿势（<code>ip_derper</code>），中文教程满地（知乎/博客园/腾讯云/飞牛 NAS wiki），属常识级操作。headscale + 自建 derper 也是"全自建"用户的标配。</p>
+  </div>
+  <p>这里要说准一句，否则第六节自相矛盾：<span class="hl">技术新颖度 = 零</span>（自建 DERP 已原生解决）；但<span class="hl">对"会命令行、非网络专家"的人，打包/省事是有真实价值的</span> —— "在一台我本来就有的 VPS 上配个 SSH 跳板"，确实比"部署并维护一个 derper 容器 + 自签证书 + 改 ACL derpMap + 绕备案"省心。只是这点价值<strong>商业上很薄</strong>。这个区分，正是第六节为什么"懒人包"只能当副线、不能当产品的根。</p>
+  <p class="src">来源：<a href="https://tailscale.com/kb/1232/derp-servers">Tailscale 官方 DERP 文档</a> · <a href="https://www.v2ex.com/t/1084815">V2EX 国内搭建难点</a> · <a href="https://fnnas.wiki/network/tailscale-derp-relay-setup/">飞牛 NAS wiki</a></p>
+
+  <h3><span class="n">三</span>独有内核②：刚被平台亲手掀掉地基</h3>
+  <p class="lead">这是最致命的一条。</p>
+  <div class="card kill">
+    <h4>Anthropic 官方 Remote Control（2026-02-25 上线）</h4>
+    <p style="margin:0">本地 Claude Code 进程<strong>主动向 Anthropic 发出站 HTTPS</strong>，不在本机开监听端口，手机/网页当遥控器。<span class="hl">全程不需要 Tailscale、不需要公网 IP、不需要内网穿透、不需要跳板。</span>断网自动重连。Pro/Max 直接可用。</p>
+  </div>
+  <p><strong>诚实边界（也是为什么它致命）：</strong>RC 目前只管 <strong>Claude Code</strong>、且是 research preview —— 它不覆盖 Codex/Gemini/Cursor/Kimi 等其它 agent，也不覆盖"连回家拿个文件、跑段脚本"这种通用远程。所以它<strong>没掀掉整个连接层，但它掀掉了最值钱的那一格 ——</strong> Claude Code 正是这套方案商业上唯一站得住的核心场景。官方用一条出站 HTTPS（国内访问 Anthropic 本来就走这条、根本不碰墙）把它产品化绕过去了，你的跳板在最关键的用例上没了存在理由。剩下的通用远程和其它 agent，又退回到第二节"自建 DERP 已覆盖"。两头一夹，中间没剩多少。Cursor 的 Web/Mobile agent 也已下场。</p>
+  <p class="src">来源：<a href="https://code.claude.com/docs/en/remote-control">Claude Code Remote Control 官方文档</a> · <a href="https://www.ithome.com/0/923/453.htm">IT之家报道</a></p>
+
+  <h3><span class="n">四</span>痛点根因被误诊了</h3>
+  <p>"Tailscale 在国内慢"不是 Tailscale 特有的毛病，是<strong>任何走海外中继的链路的通病</strong>：官方无国内中继、CGNAT 打洞失败时回落海外节点。Zedra（落新加坡/越南）、Happy、ngrok 等同样在打洞失败时回落海外，<span class="hl">换工具撞同一堵墙</span>。更关键：你的 agent 流量本来就要出海到 Anthropic（这是大头，省不掉），而控制通道是低带宽文字，海外往返也忍得了。所以"自建国内控制中继"能改善体验，但不构成"非买不可"的护城河。</p>
+
+  <h3><span class="n">五</span>赛道在快速变红，中国楔子又太薄</h3>
+  <table>
+    <tr><th>玩家</th><th>状态</th><th>对结论的意义</th></tr>
+    <tr><td>Anthropic Remote Control</td><td><span class="pill red">平台下场</span></td><td>免穿透，吃掉基础需求</td></tr>
+    <tr><td>Conductor</td><td><span class="pill amber">$22M A轮</span></td><td>资本已进场</td></tr>
+    <tr><td>Omnara</td><td><span class="pill amber">YC S25 +$500K</span></td><td>资本已进场</td></tr>
+    <tr><td>Happy / Orca / VibeTunnel</td><td><span class="pill green">22k / 5k / 4k★ 开源免费</span></td><td>免费替代充足</td></tr>
+    <tr><td>Moshi</td><td><span class="pill green">独立 indie，$60/年</span></td><td>你的栈的上游，已存在</td></tr>
+  </table>
+  <p>全球市场，纯做"手机当终端连 Claude Code"的薄封装窗口正在关闭。而<strong>没有任何一家专门做"中国网络环境"</strong> —— 这确实是空白，但它是个<strong>薄空白</strong>：</p>
+  <table class="funnel">
+    <tr><th>漏斗（费米估算，非实测）</th><th>假设</th><th>量级</th></tr>
+    <tr><td>中国职业开发者</td><td>工信部口径</td><td>500–940 万</td></tr>
+    <tr><td>本地跑 CLI agent（排除 Cursor）</td><td>渗透 1–3%</td><td>5–25 万</td></tr>
+    <tr><td>跑长任务、值得离工位监控</td><td>~30%</td><td>1.5–7.5 万</td></tr>
+    <tr><td>想用手机接管</td><td>~50%</td><td>0.7–3.7 万</td></tr>
+    <tr><td><strong>撞墙 ∩ 免费工具不够 ∩ 愿单独付费</strong></td><td>~20–40%</td><td><strong>2 千 – 1.5 万</strong></td></tr>
+  </table>
+  <p>叠加：中国开发者工具<strong>免费主导</strong>（通义灵码/文心快码个人版免费）；这批人<strong>已经在为 Claude 中转站付费</strong>（约 $14/月），即已接受"流量走海外中继"，再为"手机控制层"单独掏一笔的意愿被两头挤压。</p>
+
+  <hr>
+
+  <h3>如果非要做 —— 最靠谱的形态不是产品</h3>
+  <div class="form">
+    <div class="row"><div class="lab">主航道 ✅</div><div class="desc"><strong>内容 / 影响力资产。</strong>把这篇教程做成精品（你已在做），作为个人品牌 + nocoly 的技术信誉与 lead-gen。零变现压力，复利最高，正好踩中"手机跑 agent"的热度窗口。<br><strong>更耐放的一篇：横向对比稿</strong> ——「手机驱动 AI agent 的几条路：官方 RC vs Happy vs Moshi vs 自建 DERP vs 跳板，什么时候用哪个」。它的寿命比"单个 hack 教程"长（hack 正在被商品化），骑同一个热词，且正好打你最强的分发能力。</div></div>
+    <div class="row"><div class="lab">最小试水</div><div class="desc"><strong>"懒人一键打通包"当引流赠品</strong>（或 $几 的小工具）：替人把海外中转 + 穿透 + 手机端一次配好。卖的是省事溢价，不是技术空白。要和"折腾一次就免费"的 DIY 人群抢，转化天花板低 —— 只当副线，别当主航道。</div></div>
+    <div class="row"><div class="lab">不要做 ❌</div><div class="desc">独立订阅制 SaaS / 托管中继服务。TAM 太薄、护城河被官方 RC 和自建 DERP 两面夹击、付费意愿弱。投入产出不成立。</div></div>
+  </div>
+
+  <div class="foot">
+    <p style="margin-bottom:6px"><strong>一句话：</strong>真场景，伪商机。需求是真的、热度是真的，但官方 + 一堆免费工具已经把核心需求接住，残余空白薄到撑不起一个产品。<strong>把它当你最好的一篇技术内容去打磨，比当一个创业项目去做，回报高得多。</strong></p>
+    <p class="src">调研维度：① 前置技术核查（自建 DERP）② 品类竞品 + 融资地图 ③ 中国楔子 TAM 与付费意愿 ④ 平台风险。三路独立调研，结论高度收敛。<strong>事实核验说明：</strong>竞品融资（Conductor $22M、Omnara YC+$500K）、官方 Remote Control 的存在与机制等，均为 2026-06 网络检索结果，未逐一独立复核；TAM 为透明费米估算（非实测）。方向性结论不依赖任何单一数字。</p>
+  </div>
+
+</div>
+</body>
+</html>

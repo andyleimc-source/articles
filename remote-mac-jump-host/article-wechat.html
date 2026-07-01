@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>人在外面，怎么稳稳连回家里那台 Mac</title><meta name="author" content="老雷"><meta name="description" content="周末跑出去办事，临时想连回家里的 Mac 拿个文件、跑一段脚本。掏出手机，Tailscale 是开着的，SSH 一连——转圈，半天没反应；好不容易连上，打字一顿一顿，敲一个字等半秒。"></head><body><div style="max-width:677px;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,PingFang SC,sans-serif;"><h1 style="font-size:24px;font-weight:bold;color:#0E1116;line-height:1.4;margin:18px 0 14px;">人在外面，怎么稳稳连回家里那台 Mac</h1>
 <p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;">周末跑出去办事，临时想连回家里的 Mac 拿个文件、跑一段脚本。掏出手机，Tailscale 是开着的，SSH 一连——转圈，半天没反应；好不容易连上，打字一顿一顿，敲一个字等半秒。</p>
 <p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;">我以前就这么忍着用，时灵时不灵。后来花了点时间把它彻底搞明白：卡在哪、怎么绕过去、连上之后怎么长期顺手地用。配一次，长期能用。这篇把方法从头讲到尾，你照着抄就行。</p>
-<p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;"><img style="max-width:100%;border-radius:10px;margin:16px 0;" alt="封面" src="image/cover.png" /></p>
+<p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;"><img style="max-width:100%;border-radius:10px;margin:16px 0;" alt="封面" src="WECHATIMGPH_1" data-local-path="image/cover.png" /></p>
 <hr style="border:0;border-top:1px solid #e6e0d4;margin:28px 0;"/>
 <h2 style="font-size:20px;font-weight:bold;color:#0E1116;margin:30px 0 12px;padding-left:10px;border-left:4px solid #1AB87C;">先搞懂为什么卡</h2>
 <p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;">Tailscale 让你的设备组成一张私有网络，互相能用一个固定的内网 IP 直接访问。它的逻辑是：能点对点直连就直连；直连打不通，就走它自己的中转服务器（官方叫 DERP）帮你转发。</p>
@@ -16,7 +16,7 @@
 <p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;">那就让这台云服务器居中搭桥。手机先连上它，再从它身上跳进你的 Mac。这台云服务器在中间当<strong style="color:#0E1116;font-weight:bold;">跳板</strong>。</p>
 <p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;">第二段（跳板 → Mac）虽然还是走 Tailscale，但跳板有固定公网 IP，和你的 Mac 之间很容易打通直连。我实测过，国内云服务器到家里的 Mac，预热之后稳定在 10ms 上下，全程不碰那条被墙的中转。</p>
 <p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;">整条路长这样：</p>
-<p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;"><img style="max-width:100%;border-radius:10px;margin:16px 0;" alt="跳板架构" src="image/diagram-jump.png" /></p>
+<p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;"><img style="max-width:100%;border-radius:10px;margin:16px 0;" alt="跳板架构" src="WECHATIMGPH_2" data-local-path="image/diagram-jump.png" /></p>
 <pre style="background:#1b1e24;color:#e7e9ee;border-radius:10px;padding:16px;overflow-x:auto;font-size:13px;line-height:1.6;margin:18px 0;"><code>手机 ──(公网直连，快)──▶ 云服务器(公网IP) ──(Tailscale 直连，~10ms)──▶ 家里的 Mac
 </code></pre>
 <hr style="border:0;border-top:1px solid #e6e0d4;margin:28px 0;"/>
@@ -63,7 +63,7 @@ cat ~/.ssh/id_ed25519.pub
 <h2 style="font-size:20px;font-weight:bold;color:#0E1116;margin:30px 0 12px;padding-left:10px;border-left:4px solid #1AB87C;">连上只是第一步，断了要能回到原地</h2>
 <p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;">mosh 解决的是"网线抖一下不断"。但有几种情况它接不住：你切到别的 App 太久、手机重启、或者顺手关掉终端又重开，再连进去，常常是一个全新的 shell，刚才跑到一半的脚本、Claude Code 的对话、翻了半天的命令历史，全没了。mosh 自己没有"重新接回上一个会话"的本事。</p>
 <p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;">补这一块的是 <strong style="color:#0E1116;font-weight:bold;">tmux</strong>。把它想成一个常驻在 Mac 里的"工作间"：你所有的活都在工作间里干，连接只是通到工作间的一根网线。网线断了、换了，工作间原封不动地在那等你。</p>
-<p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;"><img style="max-width:100%;border-radius:10px;margin:16px 0;" alt="两层模型" src="image/diagram-layers.png" /></p>
+<p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;"><img style="max-width:100%;border-radius:10px;margin:16px 0;" alt="两层模型" src="WECHATIMGPH_3" data-local-path="image/diagram-layers.png" /></p>
 <p style="margin:14px 0;line-height:1.9;color:#2f343d;font-size:16px;">理解这套的关键是分清两层：</p>
 <pre style="background:#1b1e24;color:#e7e9ee;border-radius:10px;padding:16px;overflow-x:auto;font-size:13px;line-height:1.6;margin:18px 0;"><code>tmux 会话（工作间）  ← 程序、对话、命令历史都在这，常驻 Mac，不随连接消失
       ▲
