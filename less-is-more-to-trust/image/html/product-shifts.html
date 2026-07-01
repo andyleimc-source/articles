@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --paper:#FAF7F0; --ink:#0E1116; --green:#1AB87C;
+    --graphite:#3A4151; --mist:#9CB4CC; --brick:#6E6259;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    width:1280px;height:760px;background:var(--paper);
+    font-family:"PingFang SC","Hiragino Sans GB",sans-serif;color:var(--ink);
+    padding:64px 80px;overflow:hidden;
+  }
+  .tag{
+    display:inline-block;font-size:15px;font-weight:600;color:var(--green);
+    border:1.5px solid var(--green);border-radius:999px;padding:4px 16px;margin-bottom:18px;letter-spacing:2px;
+  }
+  h1{font-size:42px;font-weight:700;letter-spacing:1px;}
+  .rows{margin-top:44px;}
+  .row{
+    display:flex;align-items:center;padding:34px 0;
+    border-bottom:1.5px solid rgba(156,180,204,.4);
+  }
+  .row:last-child{border-bottom:none;}
+  .num{
+    font-family:Georgia,serif;font-size:52px;color:var(--mist);width:110px;flex:none;font-style:italic;
+  }
+  .old{font-size:31px;color:var(--graphite);width:340px;flex:none;}
+  .old s{text-decoration-color:rgba(110,98,89,.6);text-decoration-thickness:2px;}
+  .arr{color:var(--mist);font-size:32px;width:110px;flex:none;text-align:center;}
+  .new{font-size:34px;font-weight:800;}
+  .new i{
+    font-style:normal;
+    background:linear-gradient(transparent 66%, rgba(26,184,124,.32) 66%);
+    padding:0 2px;
+  }
+  .footer{
+    margin-top:40px;font-size:19px;color:var(--graphite);letter-spacing:1px;
+  }
+  .footer b{color:var(--green);}
+</style>
+</head>
+<body>
+  <div class="tag">给产品的三条</div>
+  <h1>稀缺搬家之后，产品该干的活</h1>
+
+  <div class="rows">
+    <div class="row">
+      <div class="num">01</div>
+      <div class="old"><s>抢注意力</s></div>
+      <div class="arr">→</div>
+      <div class="new"><i>配得上信任</i></div>
+    </div>
+    <div class="row">
+      <div class="num">02</div>
+      <div class="old"><s>给你更多选项</s></div>
+      <div class="arr">→</div>
+      <div class="new"><i>替你判断好</i></div>
+    </div>
+    <div class="row">
+      <div class="num">03</div>
+      <div class="old"><s>填满你的注意力</s></div>
+      <div class="arr">→</div>
+      <div class="new"><i>还你注意力</i></div>
+    </div>
+  </div>
+
+  <div class="footer">减法升级了：从「更少的按钮」，到「<b>更少你要操的心</b>」。</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --paper:#FAF7F0; --ink:#0E1116; --green:#1AB87C;
+    --graphite:#3A4151; --mist:#9CB4CC; --brick:#6E6259;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    width:1280px;height:880px;background:var(--paper);
+    font-family:"PingFang SC","Hiragino Sans GB",sans-serif;color:var(--ink);
+    padding:64px 72px 48px;overflow:hidden;
+  }
+  .tag{
+    display:inline-block;font-size:15px;font-weight:600;color:var(--green);
+    border:1.5px solid var(--green);border-radius:999px;padding:4px 16px;margin-bottom:18px;
+    letter-spacing:2px;
+  }
+  h1{font-size:42px;font-weight:700;letter-spacing:1px;}
+  h1 .en{font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:26px;color:var(--brick);margin-left:14px;}
+  .river{margin-top:52px;}
+  .river-label{
+    font-size:16px;font-weight:600;color:var(--graphite);letter-spacing:3px;margin-bottom:22px;
+  }
+  .river-label b{color:var(--ink);font-size:18px;margin-right:10px;}
+  .flow{display:flex;align-items:flex-start;}
+  .node{width:212px;flex:none;text-align:left;}
+  .avatar{
+    width:104px;height:104px;border-radius:50%;
+    border:2px solid var(--ink);background-color:#fff;
+    background-repeat:no-repeat;
+  }
+  .node.hero .avatar{border:3px solid var(--green);}
+  .name{font-size:20px;font-weight:700;margin-top:14px;}
+  .role{font-size:13px;color:var(--brick);margin-top:3px;letter-spacing:1px;}
+  .note{font-size:15px;color:var(--graphite);margin-top:8px;line-height:1.5;width:190px;}
+  .note em{font-style:normal;color:var(--green);font-weight:700;}
+  .arrow{
+    flex:1;height:104px;display:flex;align-items:center;justify-content:center;
+    color:var(--mist);font-size:26px;position:relative;top:0;
+  }
+  .arrow .line{width:100%;border-top:2px solid var(--mist);position:relative;}
+  .arrow .line::after{
+    content:"";position:absolute;right:-2px;top:-6px;
+    border-left:10px solid var(--mist);border-top:5px solid transparent;border-bottom:5px solid transparent;
+  }
+  .arrow.dashed .line{border-top:2px dashed var(--mist);}
+  .arrow .gap{
+    position:absolute;left:50%;transform:translateX(-50%);top:-34px;
+    font-size:13px;color:var(--brick);letter-spacing:2px;white-space:nowrap;
+  }
+  .divider{border-top:1.5px solid rgba(156,180,204,.45);margin:44px 0 0;}
+  .footer{margin-top:26px;font-size:12.5px;color:var(--brick);opacity:.8;letter-spacing:.5px;}
+</style>
+</head>
+<body>
+  <div class="tag">溯 源</div>
+  <h1>「少即是多」的两条河<span class="en">Less is more</span></h1>
+
+  <div class="river">
+    <div class="river-label"><b>西方</b>1855 年，从一句诗开始</div>
+    <div class="flow">
+      <div class="node">
+        <div class="avatar" style="background-image:url('../browning-oval.png');background-size:150%;background-position:50% 22%;"></div>
+        <div class="name">罗伯特·勃朗宁</div>
+        <div class="role">诗人 · 1855</div>
+        <div class="note">第一次写下<br>"Less is more"</div>
+      </div>
+      <div class="arrow"><div class="line"></div></div>
+      <div class="node">
+        <div class="avatar" style="background-image:url('../mies.jpg');background-size:135%;background-position:50% 20%;"></div>
+        <div class="name">密斯·凡德罗</div>
+        <div class="role">建筑师 · 包豪斯</div>
+        <div class="note">把它变成<br>现代主义的信条</div>
+      </div>
+      <div class="arrow"><div class="line"></div></div>
+      <div class="node hero">
+        <div class="avatar" style="background-image:url('../dieter-rams.jpg');background-size:290%;background-position:30% 14%;"></div>
+        <div class="name">迪特·拉姆斯</div>
+        <div class="role">博朗首席设计师</div>
+        <div class="note">"Weniger, aber besser"<br><em>少，但更好</em></div>
+      </div>
+      <div class="arrow"><div class="line"></div></div>
+      <div class="node">
+        <div class="avatar" style="background-image:url('../jobs-headshot.jpg');background-size:cover;background-position:50% 25%;"></div>
+        <div class="name">乔布斯 / 艾维</div>
+        <div class="role">苹果</div>
+        <div class="note">把它做进<br>上亿人的口袋</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="river">
+    <div class="river-label"><b>东方</b>这条河更老</div>
+    <div class="flow">
+      <div class="node">
+        <div class="avatar" style="background-image:url('../laozi-face.jpg');background-size:cover;background-position:50% 50%;"></div>
+        <div class="name">老子</div>
+        <div class="role">先秦 · 《道德经》</div>
+        <div class="note">少则得，多则惑<br>为道日损</div>
+      </div>
+      <div class="arrow dashed"><div class="gap">约两千年后</div><div class="line"></div></div>
+      <div class="node">
+        <div class="avatar" style="background-image:url('../wang-yangming.jpg');background-size:145%;background-position:50% 16%;"></div>
+        <div class="name">王阳明</div>
+        <div class="role">明代 · 《传习录》</div>
+        <div class="note">惟精惟一<br>舂米之喻</div>
+      </div>
+      <div class="node" style="width:424px;"></div>
+    </div>
+  </div>
+
+  <div class="footer">人像来源：Wikimedia Commons（公有领域 / CC 授权）</div>
+</body>
+</html>

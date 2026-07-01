@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root{
+    --paper:#FAF7F0; --ink:#0E1116; --green:#1AB87C;
+    --graphite:#3A4151; --mist:#9CB4CC; --brick:#6E6259;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    width:1280px;height:720px;background:var(--paper);
+    font-family:"PingFang SC","Hiragino Sans GB",sans-serif;color:var(--ink);
+    padding:64px 72px;overflow:hidden;
+  }
+  .tag{
+    display:inline-block;font-size:15px;font-weight:600;color:var(--green);
+    border:1.5px solid var(--green);border-radius:999px;padding:4px 16px;margin-bottom:18px;letter-spacing:2px;
+  }
+  h1{font-size:42px;font-weight:700;letter-spacing:1px;}
+  .sub{font-size:17px;color:var(--brick);margin-top:12px;letter-spacing:1px;}
+  .stations{display:flex;align-items:stretch;margin-top:56px;}
+  .card{
+    flex:1;border:1.5px solid var(--mist);border-radius:16px;background:#fff;
+    padding:30px 28px 26px;position:relative;
+  }
+  .card.now{border:2.5px solid var(--green);box-shadow:6px 6px 0 rgba(26,184,124,.14);}
+  .era{font-size:14px;color:var(--brick);letter-spacing:2px;}
+  .what{font-size:30px;font-weight:800;margin-top:10px;line-height:1.25;}
+  .card.now .what{color:var(--green);}
+  .desc{font-size:16px;color:var(--graphite);margin-top:16px;line-height:1.65;}
+  .desc .q{font-family:"Songti SC",serif;}
+  .badge{
+    position:absolute;top:-16px;right:20px;background:var(--green);color:#fff;
+    font-size:14px;font-weight:700;border-radius:999px;padding:4px 16px;letter-spacing:3px;
+  }
+  .arr{
+    flex:none;width:72px;display:flex;align-items:center;justify-content:center;
+    color:var(--mist);font-size:34px;font-weight:700;
+  }
+  .footer{margin-top:52px;font-size:17px;color:var(--graphite);letter-spacing:1px;}
+  .footer b{color:var(--ink);}
+</style>
+</head>
+<body>
+  <div class="tag">三次迁移</div>
+  <h1>稀缺的东西，在往下游搬家</h1>
+  <div class="sub">稀不稀缺，取决于抢它的东西有多少</div>
+
+  <div class="stations">
+    <div class="card">
+      <div class="era">印刷 / 电视时代</div>
+      <div class="what">信息稀缺</div>
+      <div class="desc">信息本身就是权力，<br>谁先拿到信息，谁赢。</div>
+    </div>
+    <div class="arr">→</div>
+    <div class="card">
+      <div class="era">互联网 / 智能手机时代</div>
+      <div class="what">注意力稀缺</div>
+      <div class="desc"><span class="q">「信息的丰盛，制造注意力的贫困。」</span><br>—— 赫伯特·西蒙，1971</div>
+    </div>
+    <div class="arr">→</div>
+    <div class="card now">
+      <div class="badge">现在</div>
+      <div class="era">AI 时代</div>
+      <div class="what">信任 · 判断稀缺</div>
+      <div class="desc">内容可以无限生成之后，<br>贵的是「哪个能信、哪个值得花时间」。</div>
+    </div>
+  </div>
+
+  <div class="footer">每一次搬家，都造就一批新产品：上一次是 <b>iPhone</b>，这一次的名字还没出现。</div>
+</body>
+</html>
