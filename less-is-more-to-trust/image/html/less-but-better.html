@@ -9,40 +9,39 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{
-    width:1280px;height:640px;background:var(--paper);
+    width:900px;height:1200px;background:var(--paper);
     font-family:"PingFang SC","Hiragino Sans GB",sans-serif;color:var(--ink);
-    padding:72px 80px;overflow:hidden;position:relative;
+    padding:72px 64px;overflow:hidden;position:relative;
   }
-  .small{font-size:18px;color:var(--brick);letter-spacing:2px;}
+  .small{font-size:22px;color:var(--brick);letter-spacing:2px;}
   .quote1{
-    font-family:Georgia,serif;font-size:54px;color:var(--mist);
-    margin:10px 0 40px;font-weight:400;text-decoration:none;
+    font-family:Georgia,serif;font-size:56px;color:var(--mist);
+    margin:12px 0 44px;font-weight:400;
   }
   .quote2{
-    font-family:Georgia,serif;font-size:76px;font-weight:700;color:var(--ink);
-    line-height:1.15;margin:12px 0 20px;
+    font-family:Georgia,serif;font-size:68px;font-weight:700;color:var(--ink);
+    line-height:1.2;margin:14px 0 22px;
   }
   .quote2 em{font-style:normal;color:var(--green);}
-  .cn{font-family:"Songti SC",serif;font-size:36px;color:var(--graphite);margin-top:6px;}
+  .cn{font-family:"Songti SC",serif;font-size:44px;color:var(--graphite);margin-top:8px;}
   .cn em{font-style:normal;color:var(--green);font-weight:900;}
-  .footer{
-    position:absolute;left:80px;bottom:56px;
-    font-family:"Songti SC",serif;font-size:20px;color:var(--brick);letter-spacing:3px;
-  }
-  /* 右侧：糠 → 米 */
-  .viz{position:absolute;right:80px;top:96px;width:360px;height:420px;}
-  .chaff{position:absolute;left:0;top:0;width:150px;height:150px;}
+  .viz{position:relative;margin-top:84px;height:330px;}
+  .chaff{position:absolute;left:30px;top:60px;width:190px;height:190px;}
   .chaff i{position:absolute;border-radius:50%;background:var(--brick);opacity:.55;}
+  .varrow{position:absolute;left:270px;top:130px;color:var(--mist);font-size:44px;}
   .bowl{
-    position:absolute;right:6px;bottom:60px;width:230px;height:115px;
-    border:3px solid var(--ink);border-top:none;border-radius:0 0 130px 130px;background:#fff;
+    position:absolute;right:60px;top:120px;width:290px;height:145px;
+    border:3.5px solid var(--ink);border-top:none;border-radius:0 0 160px 160px;background:#fff;
     overflow:hidden;
   }
-  .bowl i{position:absolute;width:13px;height:9px;border-radius:50%;background:var(--paper);border:1.5px solid var(--graphite);}
-  .heap{position:absolute;right:36px;bottom:172px;width:170px;height:46px;}
-  .heap i{position:absolute;width:14px;height:10px;border-radius:50%;background:#fff;border:1.5px solid var(--graphite);}
-  .vlabel{position:absolute;font-size:16px;color:var(--brick);letter-spacing:4px;}
-  .varrow{position:absolute;left:120px;top:150px;width:80px;color:var(--mist);font-size:30px;transform:rotate(38deg);}
+  .bowl i{position:absolute;width:16px;height:11px;border-radius:50%;background:var(--paper);border:2px solid var(--graphite);}
+  .heap{position:absolute;right:100px;top:64px;width:210px;height:56px;}
+  .heap i{position:absolute;width:17px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--graphite);}
+  .vlabel{position:absolute;font-size:22px;color:var(--brick);letter-spacing:6px;}
+  .footer{
+    position:absolute;left:0;right:0;bottom:80px;text-align:center;
+    font-family:"Songti SC",serif;font-size:28px;color:var(--graphite);letter-spacing:4px;
+  }
 </style>
 </head>
 <body>
@@ -51,40 +50,42 @@
   <div class="small">而拉姆斯的原话是</div>
   <div class="quote2">"Less, but <em>better</em>."</div>
   <div class="cn">少，但<em>更好</em>。</div>
-  <div class="footer">舂掉的是糠，留下的是米。</div>
 
   <div class="viz">
-    <i class="vlabel" style="left:26px;top:-28px;">糠</i>
+    <i class="vlabel" style="left:96px;top:6px;">糠</i>
     <div class="chaff">
-      <i style="left:8px;top:22px;width:10px;height:7px;"></i>
-      <i style="left:44px;top:6px;width:9px;height:6px;"></i>
-      <i style="left:80px;top:30px;width:11px;height:7px;"></i>
-      <i style="left:24px;top:62px;width:9px;height:6px;"></i>
-      <i style="left:64px;top:76px;width:10px;height:7px;"></i>
-      <i style="left:104px;top:60px;width:8px;height:6px;"></i>
-      <i style="left:12px;top:104px;width:10px;height:6px;"></i>
-      <i style="left:52px;top:118px;width:9px;height:7px;"></i>
-      <i style="left:96px;top:100px;width:10px;height:6px;"></i>
-      <i style="left:128px;top:16px;width:8px;height:6px;"></i>
+      <i style="left:10px;top:28px;width:13px;height:9px;"></i>
+      <i style="left:56px;top:8px;width:11px;height:8px;"></i>
+      <i style="left:102px;top:38px;width:14px;height:9px;"></i>
+      <i style="left:30px;top:79px;width:11px;height:8px;"></i>
+      <i style="left:82px;top:97px;width:13px;height:9px;"></i>
+      <i style="left:133px;top:77px;width:10px;height:8px;"></i>
+      <i style="left:15px;top:133px;width:13px;height:8px;"></i>
+      <i style="left:66px;top:151px;width:11px;height:9px;"></i>
+      <i style="left:123px;top:128px;width:13px;height:8px;"></i>
+      <i style="left:164px;top:20px;width:10px;height:8px;"></i>
+      <i style="left:158px;top:160px;width:11px;height:8px;"></i>
     </div>
     <div class="varrow">➝</div>
-    <i class="vlabel" style="right:100px;top:170px;">米</i>
+    <i class="vlabel" style="right:200px;top:6px;">米</i>
     <div class="heap">
-      <i style="left:64px;top:0;"></i>
-      <i style="left:44px;top:16px;"></i>
-      <i style="left:84px;top:16px;"></i>
-      <i style="left:24px;top:32px;"></i>
-      <i style="left:64px;top:32px;"></i>
-      <i style="left:104px;top:32px;"></i>
-      <i style="left:124px;top:32px;"></i>
-      <i style="left:4px;top:32px;"></i>
+      <i style="left:80px;top:0;"></i>
+      <i style="left:55px;top:20px;"></i>
+      <i style="left:105px;top:20px;"></i>
+      <i style="left:30px;top:40px;"></i>
+      <i style="left:80px;top:40px;"></i>
+      <i style="left:130px;top:40px;"></i>
+      <i style="left:155px;top:40px;"></i>
+      <i style="left:5px;top:40px;"></i>
     </div>
     <div class="bowl">
-      <i style="left:20px;top:8px;"></i><i style="left:52px;top:4px;"></i><i style="left:86px;top:10px;"></i>
-      <i style="left:120px;top:4px;"></i><i style="left:154px;top:10px;"></i><i style="left:186px;top:6px;"></i>
-      <i style="left:36px;top:24px;"></i><i style="left:70px;top:26px;"></i><i style="left:104px;top:22px;"></i>
-      <i style="left:138px;top:26px;"></i><i style="left:170px;top:24px;"></i>
+      <i style="left:26px;top:10px;"></i><i style="left:66px;top:5px;"></i><i style="left:108px;top:12px;"></i>
+      <i style="left:150px;top:5px;"></i><i style="left:192px;top:12px;"></i><i style="left:232px;top:7px;"></i>
+      <i style="left:45px;top:30px;"></i><i style="left:88px;top:33px;"></i><i style="left:130px;top:28px;"></i>
+      <i style="left:172px;top:33px;"></i><i style="left:212px;top:30px;"></i>
     </div>
   </div>
+
+  <div class="footer">舂掉的是糠，留下的是米。</div>
 </body>
 </html>
