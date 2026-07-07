@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --paper: #FAF7F0;
+      --ink: #0E1116;
+      --green: #1AB87C;
+      --graphite: #3A4151;
+      --mist: #9CB4CC;
+      --brick: #6E6259;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 900px;
+      height: 1200px;
+      overflow: hidden;
+      background-color: var(--paper);
+      font-family: "PingFang SC", "Hiragino Sans GB", sans-serif;
+      color: var(--graphite);
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    header { margin-bottom: 40px; }
+    .pill {
+      display: inline-block;
+      border: 2px solid var(--green);
+      color: var(--green);
+      font-size: 16px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h1 {
+      font-size: 42px;
+      color: var(--ink);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .subtitle { font-size: 20px; color: var(--brick); font-weight: 500; }
+    .diagram-container { flex: 1; display: flex; flex-direction: column; gap: 35px; }
+    .card {
+      border: 2.5px solid var(--ink);
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 6px 6px 0 var(--ink);
+      position: relative;
+    }
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .step-num {
+      background: var(--ink);
+      color: var(--paper);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .card-desc { font-size: 18px; line-height: 1.6; color: var(--graphite); }
+    .rules-list {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .rule-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 17.5px;
+    }
+    .rule-icon { color: var(--green); font-weight: bold; }
+    .flow-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -15px 0;
+      color: var(--mist);
+      font-size: 28px;
+      font-weight: bold;
+      height: 30px;
+    }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--mist);
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+    .source-info { font-size: 15px; color: var(--brick); }
+    .brand-watermark { font-size: 18px; font-weight: bold; color: var(--brick); opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="pill">模式一：施工模式</div>
+    <h1>施工模式：便宜 AI 的按卡规范</h1>
+    <div class="subtitle">通过 Task Card 与 AGY.md 强制约束低成本模型</div>
+  </header>
+
+  <div class="diagram-container">
+    <!-- Step 1: Card creation -->
+    <div class="card">
+      <div class="card-title">
+        <span class="step-num">1</span>
+        <span>自包含的任务卡 (Task Card) 入口</span>
+      </div>
+      <div class="card-desc">
+        司机模型（或人）将复杂的开发任务拆解为一张高度具体的任务卡，卡片标准是<strong>新开会话只读此卡就能独立跑完</strong>。卡片需指明：
+      </div>
+      <div class="rules-list">
+        <div class="rule-item"><span class="rule-icon">↳</span> <span><strong>开发目标</strong>：具体的改动效果与行为逻辑</span></div>
+        <div class="rule-item"><span class="rule-icon">↳</span> <span><strong>指定范围</strong>：严格规定仅允许改动的物理文件</span></div>
+        <div class="rule-item"><span class="rule-icon">↳</span> <span><strong>验证步骤</strong>：具体的测试用例与构建检查命令</span></div>
+      </div>
+    </div>
+
+    <div class="flow-line">↓</div>
+
+    <!-- Step 2: Construction Rules -->
+    <div class="card" style="border-color: var(--green); box-shadow: 6px 6px 0 var(--green);">
+      <div class="card-title" style="color: var(--green);">
+        <span class="step-num" style="background-color: var(--green);">2</span>
+        <span>隔离施工队铁律 (AGY.md)</span>
+      </div>
+      <div class="card-desc">
+        施工方（Gemini/agy）被脚本引导至 <code>git worktree</code> 隔离工作区。在开发中必须遵守以下戒律：
+      </div>
+      <div class="rules-list">
+        <div class="rule-item"><span class="rule-icon">✓</span> <span><strong>最小改动</strong>：严禁修改非指定文件，不允许顺手重构</span></div>
+        <div class="rule-item"><span class="rule-icon">✓</span> <span><strong>遇险停工</strong>：拿不准的逻辑不要盲猜，在卡底写明问题并立即退出</span></div>
+        <div class="rule-item"><span class="rule-icon">✓</span> <span><strong>硬性拦截</strong>：未通过本地测试与 build 编译的成果绝不允许提交</span></div>
+      </div>
+    </div>
+
+    <div class="flow-line">↓</div>
+
+    <!-- Step 3: Git Tracking -->
+    <div class="card">
+      <div class="card-title">
+        <span class="step-num">3</span>
+        <span>自动环境变量标记</span>
+      </div>
+      <div class="card-desc">
+        派工脚本在 worktree 中启动施工模型时，在 Shell 中自动注入环境变量：
+        <br><br>
+        <code style="background: #EFE9DC; color: #7A3E2A; padding: 4px 8px; border-radius: 4px; font-size: 16px; display: block; text-align: center; border: 1.5px solid var(--mist)">GIT_AUTHOR_NAME="agy"</code>
+        <br>
+        所有由施工队产生的 Commit 会自动带上 <code>agy</code> 物理标记，彻底防止人工签名遗漏。
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="source-info">《我在一个仓库里养了两个 AI》施工隔离架构图</div>
+    <div class="brand-watermark">雷码工坊笔记</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --paper: #FAF7F0;
+      --ink: #0E1116;
+      --green: #1AB87C;
+      --graphite: #3A4151;
+      --mist: #9CB4CC;
+      --brick: #6E6259;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 900px;
+      height: 1200px;
+      overflow: hidden;
+      background-color: var(--paper);
+      font-family: "PingFang SC", "Hiragino Sans GB", sans-serif;
+      color: var(--graphite);
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    header { margin-bottom: 40px; }
+    .pill {
+      display: inline-block;
+      border: 2px solid var(--green);
+      color: var(--green);
+      font-size: 16px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h1 {
+      font-size: 42px;
+      color: var(--ink);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .subtitle { font-size: 20px; color: var(--brick); font-weight: 500; }
+    .diagram-container { flex: 1; display: flex; flex-direction: column; gap: 35px; }
+    .card {
+      border: 2.5px solid var(--ink);
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 6px 6px 0 var(--ink);
+      position: relative;
+    }
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .tag {
+      font-size: 14px;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .card-desc { font-size: 18px; line-height: 1.6; color: var(--graphite); }
+    .split-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .source-box {
+      border: 2px solid var(--mist);
+      border-radius: 8px;
+      padding: 16px;
+      background: #FAF7F0;
+    }
+    .source-title {
+      font-size: 19px;
+      font-weight: bold;
+      color: var(--ink);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .source-icon {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--ink);
+    }
+    .source-icon.green {
+      background-color: var(--green);
+    }
+    .source-desc {
+      font-size: 15.5px;
+      line-height: 1.5;
+      color: var(--graphite);
+    }
+    .flow-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -15px 0;
+      color: var(--mist);
+      font-size: 28px;
+      font-weight: bold;
+      height: 30px;
+    }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--mist);
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+    .source-info { font-size: 15px; color: var(--brick); }
+    .brand-watermark { font-size: 18px; font-weight: bold; color: var(--brick); opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="pill">模式二：驾驶模式</div>
+    <h1>驾驶模式：方向盘接管与单一源</h1>
+    <div class="subtitle">通过 GEMINI.md 路由实现“一真源，多入口”规避规则漂移</div>
+  </header>
+
+  <div class="diagram-container">
+    <!-- Section 1: Single source of truth -->
+    <div class="card" style="border-color: var(--green); box-shadow: 6px 6px 0 var(--green);">
+      <div class="card-title" style="color: var(--green);">
+        <span class="tag" style="background-color: var(--green);">正本</span>
+        <span>单一真相源 (Single Source of Truth)</span>
+      </div>
+      <div class="card-desc">
+        项目的所有工程规则、命名约定与发布流程<strong>仅在 <code>CLAUDE.md</code> 中维护</strong>。严禁在多个文档中重复拷贝规则，以防后期修改时出现规则不同步。
+      </div>
+    </div>
+
+    <div class="flow-line">↳ 路由引导</div>
+
+    <!-- Section 2: GEMINI.md Entry -->
+    <div class="card">
+      <div class="card-title">
+        <span class="tag">副本入口</span>
+        <span>薄壳入口 (GEMINI.md)</span>
+      </div>
+      <div class="card-desc">
+        当 Gemini 接管副驾并加载 <code>GEMINI.md</code> 时，薄壳入口只做两件事：
+      </div>
+      <div class="split-view">
+        <div class="source-box">
+          <div class="source-title">
+            <div class="source-icon green"></div>
+            <span>第一指令</span>
+          </div>
+          <div class="source-desc">
+            强制 Gemini 第一步去完整读 <code>CLAUDE.md</code> 正本，对齐项目工程铁律。
+          </div>
+        </div>
+        <div class="source-box">
+          <div class="source-title">
+            <div class="source-icon"></div>
+            <span>规则过滤</span>
+          </div>
+          <div class="source-desc">
+            过滤掉 Gemini 不支持的 Claude 专属技能系统，只保留通用的 Commit 与审查规则。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-line">↓</div>
+
+    <!-- Section 3: Dual Drive -->
+    <div class="card">
+      <div class="card-title">
+        <span class="tag">运行态</span>
+        <span>两个 AI 各司其职，方向盘无缝对接</span>
+      </div>
+      <div class="card-desc">
+        通过薄壳入口的映射：
+        <br><br>
+        • <strong>额度充沛时</strong> ↳ 启动 Claude Code，直接读取主干正本进行高能设计。<br>
+        • <strong>额度耗尽时</strong> ↳ 启动 agy CLI，通过入口跳转对齐规则后接管开发。
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="source-info">《我在一个仓库里养了两个 AI》驾驶模式架构图</div>
+    <div class="brand-watermark">雷码工坊笔记</div>
+  </footer>
+</body>
+</html>

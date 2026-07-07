@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --paper: #FAF7F0;
+      --ink: #0E1116;
+      --green: #1AB87C;
+      --graphite: #3A4151;
+      --mist: #9CB4CC;
+      --brick: #6E6259;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 900px;
+      height: 1200px;
+      overflow: hidden;
+      background-color: var(--paper);
+      font-family: "PingFang SC", "Hiragino Sans GB", sans-serif;
+      color: var(--graphite);
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    header { margin-bottom: 40px; }
+    .pill {
+      display: inline-block;
+      border: 2px solid var(--green);
+      color: var(--green);
+      font-size: 16px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h1 {
+      font-size: 42px;
+      color: var(--ink);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .subtitle { font-size: 20px; color: var(--brick); font-weight: 500; }
+    .diagram-container { flex: 1; display: flex; flex-direction: column; gap: 30px; }
+    .card {
+      border: 2.5px solid var(--ink);
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 6px 6px 0 var(--ink);
+      position: relative;
+    }
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .tag {
+      font-size: 14px;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .card-desc { font-size: 18px; line-height: 1.6; color: var(--graphite); }
+    .split-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    .box {
+      border: 2px solid var(--mist);
+      border-radius: 8px;
+      padding: 16px;
+      background: #FAF7F0;
+    }
+    .box-title {
+      font-size: 19px;
+      font-weight: bold;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .box-desc {
+      font-size: 15.5px;
+      line-height: 1.5;
+      color: var(--graphite);
+    }
+    .flow-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -15px 0;
+      color: var(--mist);
+      font-size: 28px;
+      font-weight: bold;
+      height: 30px;
+    }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--mist);
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+    .source-info { font-size: 15px; color: var(--brick); }
+    .brand-watermark { font-size: 18px; font-weight: bold; color: var(--brick); opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="pill">模式三：返修监督模式</div>
+    <h1>返修监督模式：水位线与分流决策</h1>
+    <div class="subtitle">如何把高级模型的昂贵 token 100% 用在刀刃上</div>
+  </header>
+
+  <div class="diagram-container">
+    <!-- Step 1 -->
+    <div class="card" style="border-color: var(--green); box-shadow: 6px 6px 0 var(--green);">
+      <div class="card-title" style="color: var(--green);">
+        <span class="tag" style="background-color: var(--green);">步骤 1</span>
+        <span>Git 水位线 (Watermark Tag) 锁定增量</span>
+      </div>
+      <div class="card-desc">
+        在 Git 中维护一个水位线 tag。评审时，脚本只抓取该 tag 之后由 <code>Author: agy</code> 产生的 Commit 变更，<strong>历史已评审代码绝不重审</strong>。
+      </div>
+    </div>
+
+    <div class="flow-line">↓ (增量评审分流)</div>
+
+    <!-- Step 2 -->
+    <div class="card">
+      <div class="card-title">
+        <span class="tag">步骤 2</span>
+        <span>分流决策树 (Triage & Action)</span>
+      </div>
+      <div class="card-desc">
+        对于评审中发现的质量问题，根据修复成本由司机（Claude）按规则分流：
+      </div>
+      <div class="split-view">
+        <div class="box" style="border-color: var(--green);">
+          <div class="box-title" style="color: var(--green);">微小瑕疵 ↳ 顺手热修</div>
+          <div class="box-desc">
+            对于拼写、格式或几行以内的小瑕疵，Claude 现场热修并直接提交合并，省去撰写返工单的 token。
+          </div>
+        </div>
+        <div class="box" style="border-color: var(--brick);">
+          <div class="box-title" style="color: var(--brick);">大块偏离 ↳ 退回返修</div>
+          <div class="box-desc">
+            若是架构走样或逻辑错误，在任务卡底部追加返工单 (Rework Card)，将 worktree 倒回派给 agy 重构。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-line">↓</div>
+
+    <!-- Step 3 -->
+    <div class="card">
+      <div class="card-title">
+        <span class="tag">步骤 3</span>
+        <span>水位线前移 (Forward Baseline)</span>
+      </div>
+      <div class="card-desc">
+        返修分支重新合并并通过所有自检（Build & Test）后，司机（Claude）执行 tag 升级指令，将 Git 水位线 Tag 前移到 HEAD，完成本次协作闭环。
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="source-info">《我在一个仓库里养了两个 AI》返修监督架构图</div>
+    <div class="brand-watermark">雷码工坊笔记</div>
+  </footer>
+</body>
+</html>
