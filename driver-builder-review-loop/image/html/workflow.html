@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --paper: #FAF7F0;
+      --ink: #0E1116;
+      --green: #1AB87C;
+      --graphite: #3A4151;
+      --mist: #9CB4CC;
+      --brick: #6E6259;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      width: 900px;
+      height: 1200px;
+      overflow: hidden;
+      background-color: var(--paper);
+      font-family: "PingFang SC", "Hiragino Sans GB", sans-serif;
+      color: var(--graphite);
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* Header styling */
+    header {
+      margin-bottom: 40px;
+    }
+    
+    .pill {
+      display: inline-block;
+      border: 2px solid var(--green);
+      color: var(--green);
+      font-size: 16px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    h1 {
+      font-size: 42px;
+      color: var(--ink);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    
+    .subtitle {
+      font-size: 20px;
+      color: var(--brick);
+      font-weight: 500;
+    }
+
+    /* Diagram Area */
+    .diagram-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Section card styles */
+    .card {
+      border: 2.5px solid var(--ink);
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 6px 6px 0 var(--ink);
+      position: relative;
+    }
+
+    .card-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title .badge {
+      font-size: 14px;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .card-desc {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--graphite);
+    }
+
+    /* Specific Cards styling */
+    .driver-card {
+      border-color: var(--ink);
+    }
+    
+    .builder-card {
+      border-color: var(--ink);
+      background: #FFFFFF;
+    }
+
+    .highlight-card {
+      border: 2.5px solid var(--green);
+      box-shadow: 6px 6px 0 var(--green);
+    }
+    
+    .highlight-card .card-title {
+      color: var(--green);
+    }
+
+    .highlight-card .card-title .badge {
+      background: var(--green);
+      color: #FFFFFF;
+    }
+
+    /* Flow Connectors */
+    .flow-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -10px 0;
+      color: var(--mist);
+      font-size: 28px;
+      font-weight: bold;
+      height: 30px;
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .sub-card {
+      border: 2px solid var(--mist);
+      border-radius: 8px;
+      padding: 16px;
+      background: #FAF7F0;
+    }
+
+    .sub-card-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .sub-card-desc {
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--graphite);
+    }
+
+    /* Loop Area styling */
+    .loop-section {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      border: 2px dashed var(--mist);
+      padding: 20px;
+      border-radius: 12px;
+      background: rgba(156, 180, 204, 0.05);
+    }
+
+    .loop-header {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .watermark-line {
+      border: 2px solid var(--green);
+      background: rgba(26, 184, 124, 0.1);
+      color: var(--green);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Footer styling */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--mist);
+      padding-top: 20px;
+      margin-top: 20px;
+    }
+    
+    .source-info {
+      font-size: 15px;
+      color: var(--brick);
+    }
+    
+    .brand-watermark {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--brick);
+      opacity: 0.8;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="pill">双 AI 协作机制</div>
+    <h1>两个 AI 一个仓库的协作闭环</h1>
+    <div class="subtitle">施工、驾驶与返修监督三模式的落地实践</div>
+  </header>
+
+  <div class="diagram-container">
+    
+    <!-- Mode 1: Driver -->
+    <div class="card driver-card">
+      <div class="card-title">
+        <span>模式一：驾驶模式 (Driver Mode)</span>
+        <span class="badge">决策 & 拆图</span>
+      </div>
+      <div class="card-desc">
+        <strong>高能力模型 (Claude)</strong> 掌控主干仓库与 <code>CLAUDE.md</code> 顶层规则。负责系统设计、分解子任务，并输出<strong>自包含的任务卡 (Task Cards)</strong>。
+      </div>
+    </div>
+
+    <div class="flow-line">↓ (通过 git worktree 派发任务)</div>
+
+    <!-- Mode 2: Builder -->
+    <div class="card builder-card">
+      <div class="card-title">
+        <span>模式二：施工模式 (Builder Mode)</span>
+        <span class="badge" style="background-color: var(--brick)">隔离作业</span>
+      </div>
+      <div class="card-desc" style="margin-bottom: 16px;">
+        <strong>低成本模型 (Gemini)</strong> 在物理隔离的 <code>git worktree</code> 独立环境中开发。
+      </div>
+      <div class="flow-grid">
+        <div class="sub-card">
+          <div class="sub-card-title">约束：AGY.md</div>
+          <div class="sub-card-desc">严格遵循单一任务卡规范，限制文件修改范围，严禁自主重构。</div>
+        </div>
+        <div class="sub-card">
+          <div class="sub-card-title">痕迹：agy 环境变量</div>
+          <div class="sub-card-desc">自动将 Commit Author 注入为 <code>agy</code>，建立追责机制。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-line">↓ (提交 PR / 代码变更)</div>
+
+    <!-- Mode 3: Review Loop -->
+    <div class="loop-section">
+      <div class="loop-header">
+        <span>模式三：返修监督与增量评审闭环 (Review Loop)</span>
+        <span style="font-size: 16px; color: var(--brick);">控成本 & 提质量</span>
+      </div>
+      
+      <div class="watermark-line">
+        <span>Git 水位线 (Watermark Tag) 机制</span>
+        <span style="font-size: 14px;">只评审水位线之后的新 Commit，杜绝重复评审</span>
+      </div>
+
+      <div class="flow-grid">
+        <div class="sub-card" style="border-color: var(--green);">
+          <div class="sub-card-title" style="color: var(--green);">微小瑕疵 ↳ 顺手修复</div>
+          <div class="sub-card-desc">几行以内的简单修补，由 Claude 顺手修改并直接合并，省去沟通成本。</div>
+        </div>
+        <div class="sub-card" style="border-color: var(--brick);">
+          <div class="sub-card-title" style="color: var(--brick);">大块问题 ↳ 追加返工单</div>
+          <div class="sub-card-desc">架构或逻辑错误，在任务卡底部追加返修说明，退回 agy 重新施工。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="source-info">《我在一个仓库里养了两个 AI》概念架构图</div>
+    <div class="brand-watermark">雷码工坊笔记</div>
+  </footer>
+
+</body>
+</html>
