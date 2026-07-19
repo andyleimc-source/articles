@@ -1,0 +1,102 @@
+<style>
+  :root{
+    --paper:#FAF7F0; --ink:#0E1116; --green:#1AB87C;
+    --graphite:#3A4151; --mist:#9CB4CC; --brick:#6E6259;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    width:1200px;height:675px;overflow:hidden;background:var(--paper);
+    font-family:"PingFang SC","Hiragino Sans GB",sans-serif;
+    position:relative;
+  }
+  .wrap{display:flex;height:100%;padding:64px 68px 56px}
+  .left{width:560px;display:flex;flex-direction:column;justify-content:center}
+  .pill{
+    display:inline-block;align-self:flex-start;
+    border:2px solid var(--green);color:var(--green);
+    font-size:19px;font-weight:600;letter-spacing:3px;
+    padding:7px 18px;border-radius:999px;margin-bottom:34px;
+  }
+  h1{
+    font-size:76px;font-weight:800;color:var(--ink);
+    line-height:1.16;letter-spacing:-1px;
+  }
+  h1 .hl{background:linear-gradient(transparent 62%, rgba(26,184,124,.32) 62%)}
+  .sub{
+    margin-top:30px;font-size:26px;font-weight:400;color:var(--graphite);
+    line-height:1.65;max-width:470px;
+  }
+  .rule{width:78px;height:3px;background:var(--ink);margin-top:38px}
+
+  .right{flex:1;position:relative;display:flex;flex-direction:column;
+         justify-content:center;align-items:center;gap:20px}
+
+  .noise{display:flex;flex-direction:column;gap:9px;align-items:center}
+  .bub{
+    background:#fff;border:2px solid var(--mist);border-radius:999px;
+    color:var(--brick);font-size:19px;font-weight:400;padding:8px 20px;
+  }
+  .bub.a{transform:translateX(-52px) rotate(-3deg)}
+  .bub.b{transform:translateX(46px) rotate(2deg)}
+  .bub.c{transform:translateX(-14px) rotate(-1deg)}
+
+  .arrow{color:var(--mist);font-size:30px;line-height:1}
+
+  .box{
+    width:300px;height:132px;border:3px solid var(--ink);border-radius:14px;
+    background:var(--ink);color:var(--paper);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    box-shadow:9px 9px 0 rgba(26,184,124,.16);position:relative;
+  }
+  .box .t{font-size:34px;font-weight:800;letter-spacing:2px}
+  .box .s{font-size:17px;font-weight:400;color:var(--mist);margin-top:9px;letter-spacing:1px}
+  .dot{
+    position:absolute;top:-9px;right:-9px;width:18px;height:18px;
+    border-radius:50%;background:var(--green);
+  }
+
+  .out{
+    width:300px;background:#fff;border:2px solid var(--mist);border-radius:12px;
+    padding:18px 20px;display:flex;flex-direction:column;gap:11px;
+  }
+  .ln{height:10px;border-radius:6px;background:#E4E0D7}
+  .ln.g{background:var(--green);width:40%}
+  .ln.w1{width:100%} .ln.w2{width:82%} .ln.w3{width:64%}
+
+  .mark{
+    position:absolute;right:34px;bottom:26px;
+    font-size:19px;color:var(--brick);opacity:.65;letter-spacing:1px;
+  }
+</style>
+
+<div class="wrap">
+  <div class="left">
+    <span class="pill">窄 赛 道</span>
+    <h1>把软件<br>做成一个<span class="hl">黑箱</span></h1>
+    <div class="sub">AGI 时代，参数规模成不了护城河。<br>小团队的活路在巨轮开不进来的地方。</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="right">
+    <div class="noise">
+      <div class="bub a">额…那个…就是说</div>
+      <div class="bub b">我刚才讲到哪了</div>
+      <div class="bub c">这个、这个逻辑是</div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="box">
+      <span class="dot"></span>
+      <div class="t">BLACK BOX</div>
+      <div class="s">场景感知 · 热词 · 低延迟</div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="out">
+      <div class="ln g"></div>
+      <div class="ln w1"></div>
+      <div class="ln w2"></div>
+      <div class="ln w3"></div>
+    </div>
+  </div>
+</div>
+
+<div class="mark">雷码工坊笔记</div>
