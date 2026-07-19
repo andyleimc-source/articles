@@ -1,0 +1,24 @@
+{
+  "defaults": {
+    "provider": "seedream",
+    "model": "doubao-seedream-5-0-260128",
+    "quality": "2k"
+  },
+  "tasks": [
+    {
+      "image": "image/cover.png",
+      "ar": "16:9",
+      "prompt": "Flat editorial illustration in Notion-style hand-drawn vector art. Warm off-white paper background (#FAF7F0) with subtle paper grain. Centered on a simple desk plane sits a solid matte ink-black cube (#0E1116) with slightly irregular hand-drawn outlines, closed and seamless, no visible opening. From the left, a tangled chaotic bundle of thin messy scribbled threads and knotted loops in muted graphite grey (#3A4151) and misty blue (#9CB4CC) flows into the cube. From the right side of the cube emerges one single perfectly straight, smooth, glowing phosphor-green ribbon (#1AB87C) that folds itself into a neat stack of clean crisp paper sheets. Generous negative space, asymmetric composition, soft flat shading, gentle warm brick-grey shadows (#6E6259), no gradients, no neon, no purple, no 3D render, no photorealism. ABSOLUTELY NO TEXT, no letters, no numbers, no words, no labels, no logos, no signatures anywhere in the image."
+    },
+    {
+      "image": "image/blackbox.png",
+      "ar": "4:3",
+      "prompt": "Flat editorial illustration in Notion-style hand-drawn vector art. Warm off-white paper background (#FAF7F0) with subtle paper grain. A large smooth matte ink-black cube (#0E1116) stands in the center with hand-drawn slightly wobbly outlines and a flawless seamless surface. Around it, four or five tiny simplified flat-illustration human figures in graphite grey (#3A4151) and misty blue (#9CB4CC) try to get inside: one holds a magnifying glass up to the surface, one pries at a corner with a crowbar, one holds a wrench and scratches their head, one peers underneath with a flashlight. None of them find a seam. The cube's surface reflects a single thin phosphor-green glow line (#1AB87C), the only bright accent in the picture. Generous negative space, flat soft shading, warm brick-grey shadows (#6E6259), whimsical warm friendly editorial mood, no gradients, no neon, no purple, no 3D render, no photorealism. ABSOLUTELY NO TEXT, no letters, no numbers, no words, no labels, no logos anywhere in the image."
+    },
+    {
+      "image": "image/reef.png",
+      "ar": "16:9",
+      "prompt": "Flat editorial illustration in Notion-style hand-drawn vector art. Warm off-white paper background (#FAF7F0) with subtle paper grain, calm sea rendered as simple flat misty-blue bands (#9CB4CC) with minimal hand-drawn wave lines. In the far background, an enormous ink-black container ship (#0E1116) in simple flat silhouette sits stalled in deep water, unable to come closer, its bow turned away. In the foreground, a scatter of small warm brick-grey rocky reefs (#6E6259) forms a shallow rocky shelf, and on the largest little island stands one tiny simple lighthouse with a small phosphor-green glowing lamp (#1AB87C), the only bright accent. Wide horizon, lots of empty calm space, asymmetric composition with the island offset to the right, flat soft shading, no gradients, no neon, no purple, no 3D render, no photorealism. ABSOLUTELY NO TEXT, no letters, no numbers, no words, no labels, no logos anywhere in the image."
+    }
+  ]
+}
