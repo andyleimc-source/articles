@@ -9,6 +9,10 @@ Sharing experiences, perspectives, and frameworks on AI, technology, and busines
 
 ## Articles
 
+### Hands-on Hardware
+
+- ThinkPad 从 256GB 升到 1TB 的升级实录 — [中文](./published/thinkpad-l14-ssd-upgrade/article.md) — Disk cloning, verification, disassembly mistakes, and precautions
+
 ### Claude Code in Practice
 
 - 国内用 Claude Code 的完整配置指南 — [中文](./published/claude-code-guide/article.md) — Full setup guide for Claude Code in China

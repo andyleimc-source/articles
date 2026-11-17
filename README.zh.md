@@ -7,6 +7,10 @@
 
 ## 文章列表
 
+### 设备实操
+
+- [我把 ThinkPad 从 256GB 升到 1TB，拆机时被 AI 指错了位置](./published/thinkpad-l14-ssd-upgrade/article.md) — 保留 Windows 的整盘克隆、校验、拆机错误与注意事项
+
 ### Claude Code 实践
 
 - [国内用 Claude Code 的完整配置指南](./published/claude-code-guide/article.md) — 网络、账号、IDE 集成，一步到位
